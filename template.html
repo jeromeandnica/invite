@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Jerome & Nica — Our Wedding</title>
+
+  <!-- Simple, elegant styles -->
+  <style>
+    :root{
+      --bg:#fbf7f5;
+      --card:#fff;
+      --muted:#6b6b6b;
+      --accent:#b88b6f;
+      --maxw:900px;
+      --radius:18px;
+      --gap:1.25rem;
+      font-family: Inter, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
+    }
+    *{box-sizing:border-box}
+    body{
+      margin:0;
+      background:linear-gradient(180deg,var(--bg),#fff);
+      color:#222;
+      -webkit-font-smoothing:antialiased;
+      -moz-osx-font-smoothing:grayscale;
+      padding:2rem 1rem;
+      display:flex;
+      align-items:flex-start;
+      justify-content:center;
+      min-height:100vh;
+    }
+    .site{
+      width:100%;
+      max-width:var(--maxw);
+    }
+
+    .card{
+      background:var(--card);
+      border-radius:var(--radius);
+      padding:2rem;
+      box-shadow:0 10px 30px rgba(18,18,18,0.06);
+      margin-bottom:var(--gap);
+    }
+
+    .hero{
+      text-align:center;
+      padding:2rem 1rem;
+    }
+    .names{
+      font-family: "Playfair Display", serif;
+      font-size:2.1rem;
+      margin:0;
+      letter-spacing:0.6px;
+    }
+    .date{
+      color:var(--muted);
+      margin-top:.5rem;
+    }
+
+    .two-col{
+      display:grid;
+      grid-template-columns:1fr 1fr;
+      gap:1rem;
+      margin-top:1rem;
+    }
+
+    .center{
+      text-align:center;
+    }
+
+    .btn{
+      display:inline-block;
+      background:linear-gradient(90deg,var(--accent),#c79
