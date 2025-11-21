@@ -1,183 +1,292 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>Jerome & Nica — Our Wedding</title>
-
-  <!-- Simple, elegant styles -->
-  <style>
-    :root{
-      --bg:#fbf7f5;
-      --card:#fff;
-      --muted:#6b6b6b;
-      --accent:#b88b6f;
-      --maxw:900px;
-      --radius:18px;
-      --gap:1.25rem;
-      font-family: Inter, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
-    }
-    *{box-sizing:border-box}
-    body{
-      margin:0;
-      background:linear-gradient(180deg,var(--bg),#fff);
-      color:#222;
-      -webkit-font-smoothing:antialiased;
-      -moz-osx-font-smoothing:grayscale;
-      padding:2rem 1rem;
-      display:flex;
-      align-items:flex-start;
-      justify-content:center;
-      min-height:100vh;
-    }
-    .site{
-      width:100%;
-      max-width:var(--maxw);
-    }
-
-    .card{
-      background:var(--card);
-      border-radius:var(--radius);
-      padding:2rem;
-      box-shadow:0 10px 30px rgba(18,18,18,0.06);
-      margin-bottom:var(--gap);
-    }
-
-    .hero{
-      text-align:center;
-      padding:2rem 1rem;
-    }
-    .names{
-      font-family: "Playfair Display", serif;
-      font-size:2.1rem;
-      margin:0;
-      letter-spacing:0.6px;
-    }
-    .date{
-      color:var(--muted);
-      margin-top:.5rem;
-    }
-
-    .two-col{
-      display:grid;
-      grid-template-columns:1fr 1fr;
-      gap:1rem;
-      margin-top:1rem;
-    }
-
-    .center{
-      text-align:center;
-    }
-
-    .btn{
-      display:inline-block;
-      background:linear-gradient(90deg,var(--accent),#c79a7e);
-      color:white;
-      padding:.65rem 1.2rem;
-      border-radius:999px;
-      text-decoration:none;
-      font-weight:600;
-      box-shadow:0 6px 18px rgba(184,139,111,0.18);
-    }
-
-    /* RSVP form */
-    form{display:flex;flex-direction:column;gap:.6rem}
-    input, select, textarea{
-      padding:.7rem;
-      border-radius:10px;
-      border:1px solid #eee;
-      font-size:0.95rem;
-      width:100%;
-    }
-    label{font-size:.85rem;color:var(--muted)}
-
-    footer{font-size:.85rem;color:var(--muted);text-align:center;margin-top:1rem}
-
-    /* responsive */
-    @media (max-width:700px){
-      .two-col{grid-template-columns:1fr}
-      .names{font-size:1.6rem}
-    }
-  </style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Jerome & Nica | March 21, 2026</title>
+    <link rel="stylesheet" href="css/styles.css">
+    <link rel="icon" type="image/png" href="assets/images/flower.png">
 </head>
 <body>
-  <main class="site" role="main">
+    <!-- Decorative Flower Element (Fixed or Absolute) -->
+    <img src="assets/images/flower.png" alt="" class="flower-decor top-left">
+    <img src="assets/images/flower.png" alt="" class="flower-decor bottom-right">
 
-    <!-- Hero card -->
-    <section class="card hero" aria-labelledby="hero-title">
-      <h1 id="hero-title" class="names">Jerome &amp; Nica</h1>
-      <p class="date">Save the date — October 10, 2025</p>
-
-      <p style="margin-top:1rem;color:var(--muted);max-width:65ch;margin-left:auto;margin-right:auto;">
-        We’re excited to celebrate with family & friends. This site will have venue details, gift registry, and RSVP.
-      </p>
-
-      <div style="margin-top:1.25rem;" class="center">
-        <a class="btn" href="#rsvp">RSVP Now</a>
-      </div>
+    <!-- Hero Section -->
+    <section id="hero" class="hero">
+        <div class="hero-overlay"></div>
+        <div class="hero-content fade-in">
+            <h1 class="names">Jerome & Nica</h1>
+            <p class="sub-header">Are Getting Married</p>
+            <p class="date">March 21, 2026</p>
+        </div>
     </section>
 
-    <!-- Info cards -->
-    <section class="card">
-      <div class="two-col">
-        <div>
-          <h3 style="margin:0 0 .4rem 0">Ceremony</h3>
-          <p style="margin:0;color:var(--muted)">St. Mary’s Church<br>10:00 AM</p>
+    <!-- Countdown Section -->
+    <section id="countdown" class="countdown-section fade-in">
+        <div class="container">
+            <div id="timer" class="timer">
+                <div class="time-unit">
+                    <span id="days">00</span>
+                    <label>Days</label>
+                </div>
+                <div class="time-unit">
+                    <span id="hours">00</span>
+                    <label>Hours</label>
+                </div>
+                <div class="time-unit">
+                    <span id="minutes">00</span>
+                    <label>Minutes</label>
+                </div>
+                <div class="time-unit">
+                    <span id="seconds">00</span>
+                    <label>Seconds</label>
+                </div>
+            </div>
         </div>
-        <div>
-          <h3 style="margin:0 0 .4rem 0">Reception</h3>
-          <p style="margin:0;color:var(--muted)">The Glasshouse Banquet Hall<br>12:30 PM onwards</p>
+    </section>
+
+    <!-- Wedding Details -->
+    <section id="details" class="details-section fade-in">
+        <div class="container glass-card">
+            <h2 class="section-title">The Details</h2>
+            <div class="details-grid">
+                <div class="detail-item">
+                    <h3>When</h3>
+                    <p>March 21, 2026</p>
+                    <p>3:00 PM</p>
+                </div>
+                <div class="detail-item">
+                    <h3>Where</h3>
+                    <p>Mahogany Place, Tagaytay</p>
+                    <div class="map-container">
+                        <iframe 
+                            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3869.543212345678!2d120.9532123!3d14.1032123!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x33bd77685f854f8b%3A0x1234567890abcdef!2sMahogany%20Place%20Tagaytay!5e0!3m2!1sen!2sph!4v1634567890123!5m2!1sen!2sph" 
+                            width="100%" 
+                            height="250" 
+                            style="border:0;" 
+                            allowfullscreen="" 
+                            loading="lazy">
+                        </iframe>
+                        <a href="https://maps.app.goo.gl/eABxUfmjZBd7s1Dt9" target="_blank" class="btn">View on Google Maps</a>
+                    </div>
+                </div>
+            </div>
+            <div class="adult-only-notice">
+                <p>We love your little ones, but this is an <strong>Adult Only Celebration</strong>.</p>
+                <p>Thank you for understanding!</p>
+            </div>
         </div>
-      </div>
+    </section>
+
+    <!-- Entourage -->
+    <section id="entourage" class="entourage-section fade-in">
+        <div class="container">
+            <h2 class="section-title">The Entourage</h2>
+            
+            <div class="entourage-group glass-card">
+                <div class="couple-parents">
+                    <div class="group">
+                        <h3>Groom</h3>
+                        <p>Jerome R. Sumilang</p>
+                    </div>
+                    <div class="group">
+                        <h3>Bride</h3>
+                        <p>Veronica G. Espineli</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="entourage-columns">
+                <div class="column glass-card">
+                    <h3>Groom's Parents</h3>
+                    <p>Mr. Jairo M. Sumilang</p>
+                    <p>Mrs. Lorna R. Sumilang</p>
+                    
+                    <h3>Best Man</h3>
+                    <p>Joshua Carmelo Raymundo</p>
+
+                    <h3>Groomsmen</h3>
+                    <ul class="list-unstyled">
+                        <li>Louie Mejia</li>
+                        <li>Carl Angelo Mejia</li>
+                        <li>John Glen Sabado</li>
+                        <li>Marcio Manalo</li>
+                        <li>Aldwin Sedric Raymundo</li>
+                        <li>Joshua Gabriel Bastian</li>
+                        <li>Chad Michael Crisolo</li>
+                        <li>Jose Gabriel Espineli</li>
+                        <li>John Regin Mari Baldoza</li>
+                    </ul>
+                </div>
+
+                <div class="column glass-card">
+                    <h3>Bride's Parents</h3>
+                    <p>Mr. Jose Victor A. Espineli</p>
+                    <p>Mrs. Jazmine G. Espineli</p>
+
+                    <h3>Maid of Honor</h3>
+                    <p>Rasam Espineli</p>
+
+                    <h3>Bridesmaids</h3>
+                    <ul class="list-unstyled">
+                        <li>Anlorraine Cortez</li>
+                        <li>Janelle Sala</li>
+                        <li>Jojy Mae Juayong</li>
+                        <li>Kristine Lois Hauje</li>
+                        <li>Kyle Angeline Mejia</li>
+                        <li>Karina Espineli</li>
+                        <li>Chloe Mikaela Crisolo</li>
+                        <li>Maria Espineli</li>
+                        <li>Chynna Mikaela Crisolo</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="sponsors-section glass-card">
+                <h3>Principal Sponsors</h3>
+                <div class="sponsors-grid">
+                    <div class="ninongs">
+                        <h4>Ninongs</h4>
+                        <ul class="list-unstyled">
+                            <li>Mr. Jose Leonilo Espineli</li>
+                            <li>Mr. Mike Crisolo</li>
+                            <li>Mr. Nathan Mejia</li>
+                            <li>Mr. Riejie Trazo</li>
+                            <li>Mr. Ezekiel Orbeta</li>
+                            <li>Mr. Gabriel Luke Quimson</li>
+                            <li>Ptr. Peter Hauje</li>
+                            <li>Mr. Nikko Cunanan</li>
+                            <li>Mr. Ruel Aves</li>
+                        </ul>
+                    </div>
+                    <div class="ninangs">
+                        <h4>Ninangs</h4>
+                        <ul class="list-unstyled">
+                            <li>Mrs. Maria Teresa Espineli</li>
+                            <li>Mrs. Maria Teresa Isolda Crisolo</li>
+                            <li>Mrs. Anna Mejia</li>
+                            <li>Mrs. Estela Trazo</li>
+                            <li>Mrs. Lyn Jasmin Mendoza</li>
+                            <li>Mrs. Azelle Kayze Free Quimson</li>
+                            <li>Mrs. Priscila Grace Galang</li>
+                            <li>Mrs. Bernice Cunanan</li>
+                            <li>Dra. Celia Noel</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="secondary-sponsors glass-card">
+                <h3>Secondary Sponsors</h3>
+                <div class="sponsor-role">
+                    <strong>Cord:</strong> Ian Rafael Espineli & Bernadette Rocha
+                </div>
+                <div class="sponsor-role">
+                    <strong>Veil:</strong> Kyle Chester Raymundo & Faizelle Ann De Leon
+                </div>
+                <div class="sponsor-role">
+                    <strong>Candle:</strong> Justin De los Reyes & Isabel Espineli
+                </div>
+            </div>
+
+            <div class="bearers glass-card">
+                <div class="bearer-group">
+                    <h3>Ring Bearer</h3>
+                    <p>Jairus Joseph Parungao</p>
+                </div>
+                <div class="bearer-group">
+                    <h3>Bible Bearer</h3>
+                    <p>Arjon Jaze Parungao</p>
+                </div>
+                <div class="bearer-group">
+                    <h3>Coin Bearer</h3>
+                    <p>Alonzo Isaiah De Leon</p>
+                </div>
+            </div>
+
+            <div class="flower-girls glass-card">
+                <h3>Flower Girls</h3>
+                <ul class="list-unstyled">
+                    <li>Jaina Ysabel Angeles</li>
+                    <li>Reizh Nathalie Parungao</li>
+                    <li>Jiana Ysabella Angeles</li>
+                </ul>
+            </div>
+            
+            <div class="officiant glass-card">
+                <h3>Wedding Officiant</h3>
+                <p>Pastor Peter Hauje</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Attire Guide -->
+    <section id="attire" class="attire-section fade-in">
+        <div class="container glass-card">
+            <h2 class="section-title">Attire Guide</h2>
+            <div class="color-palette">
+                <div class="color-swatch" style="background-color: #6B7F60;"></div>
+                <div class="color-swatch" style="background-color: #6F5643;"></div>
+                <div class="color-swatch" style="background-color: #C2A886;"></div>
+                <div class="color-swatch" style="background-color: #F2EBD9;"></div>
+            </div>
+            <div class="attire-rules">
+                <p><strong>Ninang:</strong> Formal Flowy Beige Gowns</p>
+                <p><strong>Guests:</strong> Formal / Semi-Formal in Earth Tones</p>
+                <p class="restriction">Please, no jeans, shorts, or slippers.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Gifts -->
+    <section id="gifts" class="gifts-section fade-in">
+        <div class="container glass-card">
+            <h2 class="section-title">Gift Guide</h2>
+            <p class="gift-message">
+                With all that we have, we've been truly blessed.<br>
+                Your presence and prayers are all that we request.<br>
+                But if you desire to give nonetheless,<br>
+                A monetary gift is one we suggest.
+            </p>
+        </div>
     </section>
 
     <!-- RSVP -->
-    <section id="rsvp" class="card" aria-labelledby="rsvp-title">
-      <h2 id="rsvp-title" style="margin-top:0">RSVP</h2>
-      <p style="color:var(--muted);margin-top:0;margin-bottom:.75rem;">Please let us know if you can join us. (Test form — replace action with your Formspree or API endpoint)</p>
-
-      <!-- Replace the action URL with your own Formspree / API endpoint -->
-      <form id="rsvp-form" method="POST" action="https://formspree.io/f/your-form-id">
-        <label for="name">Full name</label>
-        <input id="name" name="name" type="text" placeholder="Jane Doe" required>
-
-        <label for="attending">Will you attend?</label>
-        <select id="attending" name="attending" required>
-          <option value="">Select...</option>
-          <option value="yes">Yes — I will attend</option>
-          <option value="no">Sorry — I cannot attend</option>
-        </select>
-
-        <label for="guests">Number of guests (including you)</label>
-        <input id="guests" name="guests" type="number" min="1" value="1">
-
-        <label for="message">Message (optional)</label>
-        <textarea id="message" name="message" rows="3" placeholder="Dietary notes, love note, etc."></textarea>
-
-        <div style="margin-top:.6rem;">
-          <button type="submit" class="btn" style="border:none">Send RSVP</button>
+    <section id="rsvp" class="rsvp-section fade-in">
+        <div class="container glass-card">
+            <h2 class="section-title">RSVP</h2>
+            <form id="rsvp-form">
+                <div class="form-group">
+                    <label for="name">Name</label>
+                    <input type="text" id="name" name="name" required placeholder="Your Full Name">
+                </div>
+                <div class="form-group">
+                    <label for="attendance">Will you be attending?</label>
+                    <select id="attendance" name="attendance" required>
+                        <option value="yes">Joyfully Accepts</option>
+                        <option value="no">Regretfully Declines</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="guests">Number of Guests</label>
+                    <input type="number" id="guests" name="guests" min="1" value="1">
+                </div>
+                <div class="form-group">
+                    <label for="message">Message for the Couple</label>
+                    <textarea id="message" name="message" rows="4" placeholder="Write a sweet note..."></textarea>
+                </div>
+                <button type="submit" class="btn btn-submit">Send RSVP</button>
+            </form>
         </div>
-      </form>
-
-      <p id="rsvp-note" style="color:var(--muted);font-size:.9rem;margin-top:.75rem;">
-        Tip: Replace the form action with your Formspree URL, or later point it to your Flask API endpoint.
-      </p>
     </section>
 
-    <footer>
-      © Jerome &amp; Nica — Invitation • Built with ❤️
+    <!-- Footer -->
+    <footer class="footer">
+        <p>#WhenDestiNICAmeForJEROME</p>
+        <p>&copy; 2026 Jerome & Nica</p>
     </footer>
-  </main>
 
-  <!-- Minimal JS: show a thank-you message after submit (works for demo only) -->
-  <script>
-    const form = document.getElementById('rsvp-form');
-    form.addEventListener('submit', (e) => {
-      // let actual form submit proceed (to Formspree). For local testing you can preventDefault:
-      // e.preventDefault();
-      // alert('RSVP submitted (demo). Replace form action with your endpoint to store responses.');
-      // Or let it submit to the action URL.
-    });
-  </script>
+    <script src="js/script.js"></script>
 </body>
 </html>
