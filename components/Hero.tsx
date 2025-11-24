@@ -3,7 +3,7 @@ import React from 'react';
 import { ArrowDown } from 'lucide-react';
 
 // Using a high-quality Unsplash placeholder for the rustic theme
-const heroImage = "https://images.unsplash.com/photo-1518531933037-91b2f5f229cc?q=80&w=2574&auto=format&fit=crop";
+const heroImage = "/images/hero.jpg";
 
 const Hero: React.FC = () => {
   return (

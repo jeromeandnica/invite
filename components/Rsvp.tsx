@@ -342,29 +342,6 @@ const Rsvp: React.FC = () => {
           </AnimatePresence>
         </motion.div>
 
-        {/* --- TEMPORARY SEED BUTTON & STATUS --- */}
-        <div className="mt-8 text-center">
-          <button 
-            onClick={handleSeedEntourage}
-            disabled={loading}
-            className="text-white/50 text-xs uppercase tracking-widest flex items-center justify-center gap-2 mx-auto hover:text-white transition-colors disabled:opacity-30"
-          >
-            {loading ? <Loader2 className="animate-spin w-3 h-3" /> : <Database size={14} />}
-            Admin: Seed Entourage Data
-          </button>
-          
-          {/* Status Text Display */}
-          {seedStatus && (
-            <motion.p 
-              initial={{ opacity: 0, y: 5 }}
-              animate={{ opacity: 1, y: 0 }}
-              className="text-white text-sm font-heading mt-3 bg-black/30 inline-block px-4 py-1 rounded-full"
-            >
-              {seedStatus}
-            </motion.p>
-          )}
-        </div>
-
       </div>
     </section>
   );

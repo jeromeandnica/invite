@@ -25,34 +25,6 @@ const SimpleFlowerSVG = ({ className }: { className?: string }) => (
   </svg>
 );
 
-// 2. Vertically Long Vine Chain for Sides
-const VerticalVineSVG = ({ className }: { className?: string }) => (
-  <svg viewBox="0 0 60 300" className={className} fill="none" stroke="currentColor" strokeWidth="1.5" preserveAspectRatio="none">
-    {/* Main Stem - Winding curve */}
-    <path d="M30,0 Q40,50 30,100 T30,200 T30,300" opacity="0.6" />
-    
-    {/* Leaves Set 1 */}
-    <path d="M30,50 Q10,40 5,65" fill="currentColor" fillOpacity="0.1" />
-    <path d="M30,50 Q10,40 5,65" />
-    
-    {/* Leaves Set 2 */}
-    <path d="M30,100 Q50,90 55,115" fill="currentColor" fillOpacity="0.1" />
-    <path d="M30,100 Q50,90 55,115" />
-    
-    {/* Leaves Set 3 */}
-    <path d="M30,150 Q10,140 5,165" fill="currentColor" fillOpacity="0.1" />
-    <path d="M30,150 Q10,140 5,165" />
-    
-    {/* Leaves Set 4 */}
-    <path d="M30,200 Q50,190 55,215" fill="currentColor" fillOpacity="0.1" />
-    <path d="M30,200 Q50,190 55,215" />
-    
-    {/* Leaves Set 5 */}
-    <path d="M30,250 Q10,240 5,265" fill="currentColor" fillOpacity="0.1" />
-    <path d="M30,250 Q10,240 5,265" />
-  </svg>
-);
-
 
 // --- COMPOSITES ---
 
@@ -79,7 +51,7 @@ const SideBorderColumn: React.FC<{ position: 'left' | 'right' }> = ({ position }
     >
       {repetitions.map((_, index) => (
         <div key={index} className="flex-grow w-12 md:w-20 h-auto min-h-[200px]">
-             <VerticalVineSVG className={`w-full h-full ${position === 'right' ? 'scale-x-[-1]' : ''}`} />
+             <img src="/images/flower.png" alt="Flower vine decoration" style={{ width: '100px' }} />
         </div>
       ))}
     </div>
