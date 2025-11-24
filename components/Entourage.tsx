@@ -1,6 +1,7 @@
 
 import React from 'react';
 import { ENTOURAGE_DATA } from '../constants';
+import flowerVine from '../assets/flower.png';
 
 // Consistent styling constants for uniform font sizes
 const NAME_CLASS = "font-body text-lg md:text-xl text-cream-soft";
@@ -51,7 +52,7 @@ const SideBorderColumn: React.FC<{ position: 'left' | 'right' }> = ({ position }
     >
       {repetitions.map((_, index) => (
         <div key={index} className="flex-grow w-12 md:w-20 h-auto min-h-[200px]">
-             <img src="/images/flower.png" alt="Flower vine decoration" style={{ width: '100px' }} />
+             <img src={flowerVine} alt="Flower vine decoration" style={{ width: '100px' }} />
         </div>
       ))}
     </div>
