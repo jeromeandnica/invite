@@ -1,292 +1,62 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Jerome & Nica | March 21, 2026</title>
-    <link rel="stylesheet" href="css/styles.css">
-    <link rel="icon" type="image/png" href="assets/images/flower.png">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Jerome & Nica - March 21, 2026</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&family=Merriweather:ital,wght@0,300;0,400;0,700;1,300&display=swap" rel="stylesheet">
+    <script>
+      tailwind.config = {
+        theme: {
+          extend: {
+            colors: {
+              'sage-dark': '#56644B',
+              'sage-light': '#8FA083',
+              'brown-earth': '#6F5643',
+              'beige-sand': '#C1AA87',
+              'cream-soft': '#F4F0E6',
+              'paper': '#F9F8F4',
+            },
+            fontFamily: {
+              script: ['"Great Vibes"', 'cursive'],
+              heading: ['"Libre Baskerville"', 'serif'],
+              body: ['"Merriweather"', 'serif'],
+            },
+            animation: {
+              'fade-in-up': 'fadeInUp 1.2s cubic-bezier(0.22, 1, 0.36, 1) forwards',
+              'fade-in': 'fadeIn 1.5s ease-out forwards',
+              'pulse-slow': 'pulse 4s cubic-bezier(0.4, 0, 0.6, 1) infinite',
+            },
+            keyframes: {
+              fadeInUp: {
+                '0%': { opacity: '0', transform: 'translateY(40px)' },
+                '100%': { opacity: '1', transform: 'translateY(0)' },
+              },
+              fadeIn: {
+                '0%': { opacity: '0' },
+                '100%': { opacity: '1' },
+              },
+              pulse: {
+                '0%, 100%': { opacity: '1' },
+                '50%': { opacity: '0.5' },
+              }
+            }
+          }
+        }
+      }
+    </script>
+    <style>
+      /* Smooth scrolling for anchor links */
+      html {
+        scroll-behavior: smooth;
+      }
+    </style>
+<link rel="stylesheet" href="/index.css">
 </head>
-<body>
-    <!-- Decorative Flower Element (Fixed or Absolute) -->
-    <img src="assets/images/flower.png" alt="" class="flower-decor top-left">
-    <img src="assets/images/flower.png" alt="" class="flower-decor bottom-right">
-
-    <!-- Hero Section -->
-    <section id="hero" class="hero">
-        <div class="hero-overlay"></div>
-        <div class="hero-content fade-in">
-            <h1 class="names">Jerome & Nica</h1>
-            <p class="sub-header">Are Getting Married</p>
-            <p class="date">March 21, 2026</p>
-        </div>
-    </section>
-
-    <!-- Countdown Section -->
-    <section id="countdown" class="countdown-section fade-in">
-        <div class="container">
-            <div id="timer" class="timer">
-                <div class="time-unit">
-                    <span id="days">00</span>
-                    <label>Days</label>
-                </div>
-                <div class="time-unit">
-                    <span id="hours">00</span>
-                    <label>Hours</label>
-                </div>
-                <div class="time-unit">
-                    <span id="minutes">00</span>
-                    <label>Minutes</label>
-                </div>
-                <div class="time-unit">
-                    <span id="seconds">00</span>
-                    <label>Seconds</label>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Wedding Details -->
-    <section id="details" class="details-section fade-in">
-        <div class="container glass-card">
-            <h2 class="section-title">The Details</h2>
-            <div class="details-grid">
-                <div class="detail-item">
-                    <h3>When</h3>
-                    <p>March 21, 2026</p>
-                    <p>3:00 PM</p>
-                </div>
-                <div class="detail-item">
-                    <h3>Where</h3>
-                    <p>Mahogany Place, Tagaytay</p>
-                    <div class="map-container">
-                        <iframe 
-                            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3869.543212345678!2d120.9532123!3d14.1032123!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x33bd77685f854f8b%3A0x1234567890abcdef!2sMahogany%20Place%20Tagaytay!5e0!3m2!1sen!2sph!4v1634567890123!5m2!1sen!2sph" 
-                            width="100%" 
-                            height="250" 
-                            style="border:0;" 
-                            allowfullscreen="" 
-                            loading="lazy">
-                        </iframe>
-                        <a href="https://maps.app.goo.gl/eABxUfmjZBd7s1Dt9" target="_blank" class="btn">View on Google Maps</a>
-                    </div>
-                </div>
-            </div>
-            <div class="adult-only-notice">
-                <p>We love your little ones, but this is an <strong>Adult Only Celebration</strong>.</p>
-                <p>Thank you for understanding!</p>
-            </div>
-        </div>
-    </section>
-
-    <!-- Entourage -->
-    <section id="entourage" class="entourage-section fade-in">
-        <div class="container">
-            <h2 class="section-title">The Entourage</h2>
-            
-            <div class="entourage-group glass-card">
-                <div class="couple-parents">
-                    <div class="group">
-                        <h3>Groom</h3>
-                        <p>Jerome R. Sumilang</p>
-                    </div>
-                    <div class="group">
-                        <h3>Bride</h3>
-                        <p>Veronica G. Espineli</p>
-                    </div>
-                </div>
-            </div>
-
-            <div class="entourage-columns">
-                <div class="column glass-card">
-                    <h3>Groom's Parents</h3>
-                    <p>Mr. Jairo M. Sumilang</p>
-                    <p>Mrs. Lorna R. Sumilang</p>
-                    
-                    <h3>Best Man</h3>
-                    <p>Joshua Carmelo Raymundo</p>
-
-                    <h3>Groomsmen</h3>
-                    <ul class="list-unstyled">
-                        <li>Louie Mejia</li>
-                        <li>Carl Angelo Mejia</li>
-                        <li>John Glen Sabado</li>
-                        <li>Marcio Manalo</li>
-                        <li>Aldwin Sedric Raymundo</li>
-                        <li>Joshua Gabriel Bastian</li>
-                        <li>Chad Michael Crisolo</li>
-                        <li>Jose Gabriel Espineli</li>
-                        <li>John Regin Mari Baldoza</li>
-                    </ul>
-                </div>
-
-                <div class="column glass-card">
-                    <h3>Bride's Parents</h3>
-                    <p>Mr. Jose Victor A. Espineli</p>
-                    <p>Mrs. Jazmine G. Espineli</p>
-
-                    <h3>Maid of Honor</h3>
-                    <p>Rasam Espineli</p>
-
-                    <h3>Bridesmaids</h3>
-                    <ul class="list-unstyled">
-                        <li>Anlorraine Cortez</li>
-                        <li>Janelle Sala</li>
-                        <li>Jojy Mae Juayong</li>
-                        <li>Kristine Lois Hauje</li>
-                        <li>Kyle Angeline Mejia</li>
-                        <li>Karina Espineli</li>
-                        <li>Chloe Mikaela Crisolo</li>
-                        <li>Maria Espineli</li>
-                        <li>Chynna Mikaela Crisolo</li>
-                    </ul>
-                </div>
-            </div>
-
-            <div class="sponsors-section glass-card">
-                <h3>Principal Sponsors</h3>
-                <div class="sponsors-grid">
-                    <div class="ninongs">
-                        <h4>Ninongs</h4>
-                        <ul class="list-unstyled">
-                            <li>Mr. Jose Leonilo Espineli</li>
-                            <li>Mr. Mike Crisolo</li>
-                            <li>Mr. Nathan Mejia</li>
-                            <li>Mr. Riejie Trazo</li>
-                            <li>Mr. Ezekiel Orbeta</li>
-                            <li>Mr. Gabriel Luke Quimson</li>
-                            <li>Ptr. Peter Hauje</li>
-                            <li>Mr. Nikko Cunanan</li>
-                            <li>Mr. Ruel Aves</li>
-                        </ul>
-                    </div>
-                    <div class="ninangs">
-                        <h4>Ninangs</h4>
-                        <ul class="list-unstyled">
-                            <li>Mrs. Maria Teresa Espineli</li>
-                            <li>Mrs. Maria Teresa Isolda Crisolo</li>
-                            <li>Mrs. Anna Mejia</li>
-                            <li>Mrs. Estela Trazo</li>
-                            <li>Mrs. Lyn Jasmin Mendoza</li>
-                            <li>Mrs. Azelle Kayze Free Quimson</li>
-                            <li>Mrs. Priscila Grace Galang</li>
-                            <li>Mrs. Bernice Cunanan</li>
-                            <li>Dra. Celia Noel</li>
-                        </ul>
-                    </div>
-                </div>
-            </div>
-            
-            <div class="secondary-sponsors glass-card">
-                <h3>Secondary Sponsors</h3>
-                <div class="sponsor-role">
-                    <strong>Cord:</strong> Ian Rafael Espineli & Bernadette Rocha
-                </div>
-                <div class="sponsor-role">
-                    <strong>Veil:</strong> Kyle Chester Raymundo & Faizelle Ann De Leon
-                </div>
-                <div class="sponsor-role">
-                    <strong>Candle:</strong> Justin De los Reyes & Isabel Espineli
-                </div>
-            </div>
-
-            <div class="bearers glass-card">
-                <div class="bearer-group">
-                    <h3>Ring Bearer</h3>
-                    <p>Jairus Joseph Parungao</p>
-                </div>
-                <div class="bearer-group">
-                    <h3>Bible Bearer</h3>
-                    <p>Arjon Jaze Parungao</p>
-                </div>
-                <div class="bearer-group">
-                    <h3>Coin Bearer</h3>
-                    <p>Alonzo Isaiah De Leon</p>
-                </div>
-            </div>
-
-            <div class="flower-girls glass-card">
-                <h3>Flower Girls</h3>
-                <ul class="list-unstyled">
-                    <li>Jaina Ysabel Angeles</li>
-                    <li>Reizh Nathalie Parungao</li>
-                    <li>Jiana Ysabella Angeles</li>
-                </ul>
-            </div>
-            
-            <div class="officiant glass-card">
-                <h3>Wedding Officiant</h3>
-                <p>Pastor Peter Hauje</p>
-            </div>
-        </div>
-    </section>
-
-    <!-- Attire Guide -->
-    <section id="attire" class="attire-section fade-in">
-        <div class="container glass-card">
-            <h2 class="section-title">Attire Guide</h2>
-            <div class="color-palette">
-                <div class="color-swatch" style="background-color: #6B7F60;"></div>
-                <div class="color-swatch" style="background-color: #6F5643;"></div>
-                <div class="color-swatch" style="background-color: #C2A886;"></div>
-                <div class="color-swatch" style="background-color: #F2EBD9;"></div>
-            </div>
-            <div class="attire-rules">
-                <p><strong>Ninang:</strong> Formal Flowy Beige Gowns</p>
-                <p><strong>Guests:</strong> Formal / Semi-Formal in Earth Tones</p>
-                <p class="restriction">Please, no jeans, shorts, or slippers.</p>
-            </div>
-        </div>
-    </section>
-
-    <!-- Gifts -->
-    <section id="gifts" class="gifts-section fade-in">
-        <div class="container glass-card">
-            <h2 class="section-title">Gift Guide</h2>
-            <p class="gift-message">
-                With all that we have, we've been truly blessed.<br>
-                Your presence and prayers are all that we request.<br>
-                But if you desire to give nonetheless,<br>
-                A monetary gift is one we suggest.
-            </p>
-        </div>
-    </section>
-
-    <!-- RSVP -->
-    <section id="rsvp" class="rsvp-section fade-in">
-        <div class="container glass-card">
-            <h2 class="section-title">RSVP</h2>
-            <form id="rsvp-form">
-                <div class="form-group">
-                    <label for="name">Name</label>
-                    <input type="text" id="name" name="name" required placeholder="Your Full Name">
-                </div>
-                <div class="form-group">
-                    <label for="attendance">Will you be attending?</label>
-                    <select id="attendance" name="attendance" required>
-                        <option value="yes">Joyfully Accepts</option>
-                        <option value="no">Regretfully Declines</option>
-                    </select>
-                </div>
-                <div class="form-group">
-                    <label for="guests">Number of Guests</label>
-                    <input type="number" id="guests" name="guests" min="1" value="1">
-                </div>
-                <div class="form-group">
-                    <label for="message">Message for the Couple</label>
-                    <textarea id="message" name="message" rows="4" placeholder="Write a sweet note..."></textarea>
-                </div>
-                <button type="submit" class="btn btn-submit">Send RSVP</button>
-            </form>
-        </div>
-    </section>
-
-    <!-- Footer -->
-    <footer class="footer">
-        <p>#WhenDestiNICAmeForJEROME</p>
-        <p>&copy; 2026 Jerome & Nica</p>
-    </footer>
-
-    <script src="js/script.js"></script>
+  <body>
+    <div id="root"></div>
+  <script type="module" src="/index.tsx"></script>
 </body>
 </html>
