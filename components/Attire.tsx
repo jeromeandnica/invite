@@ -1,13 +1,13 @@
-
 import React, { useState } from 'react';
 import { COLORS } from '../constants.ts';
-import { HelpCircle, Gift, ArrowRight, Maximize2 } from 'lucide-react';
+import { HelpCircle, Gift, ArrowRight, Maximize2, Camera } from 'lucide-react'; // Added Camera icon
 import EnchantedReveal from './EnchantedReveal.tsx';
 import ImageModal from './ImageModal.tsx';
 import { Link } from 'react-router-dom';
 
 import sponsorImg from '../assets/sponsor-attire.png'; 
 import guestImg from '../assets/guest-attire.png';
+
 // ==================================================================================
 // !!! REPLACE THIS IMAGE: SPONSOR ATTIRE REFERENCE !!!
 // Description: The reference photo for "Ninong/Ninang" attire.
@@ -54,7 +54,7 @@ const Attire: React.FC = () => {
         caption={selectedImage?.caption}
       />
 
-      <div className="container mx-auto px-6 max-w-5xl text-center">
+      <div className="container mx-auto px-6 max-w-6xl text-center">
         
         {/* Attire Guide Header */}
         <div className="mb-12 flex flex-col items-center">
@@ -120,6 +120,7 @@ const Attire: React.FC = () => {
                     <img 
                       src={guestAttireImage} 
                       alt="Guest Attire Reference" 
+                      loading="lazy"
                       className="w-full h-full object-cover grayscale-[20%] opacity-90 group-hover:opacity-100 group-hover:scale-105 transition-all duration-500"
                     />
                     <div className="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent"></div>
@@ -163,6 +164,7 @@ const Attire: React.FC = () => {
                     <img 
                       src={sponsorAttireImage} 
                       alt="Sponsor Attire Reference Placeholder" 
+                      loading="lazy"
                       className="w-full h-full object-cover grayscale-[20%] opacity-90 group-hover:opacity-100 group-hover:scale-105 transition-all duration-500"
                     />
                     <div className="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent"></div>
@@ -195,7 +197,7 @@ const Attire: React.FC = () => {
           </div>
         </div>
 
-        {/* Logistics Grid: FAQS & Gifts */}
+        {/* Logistics Grid: FAQS, Photos & Gifts */}
         <div className="mb-12">
            <div className="flex items-center justify-center gap-4 mb-8">
              <div className="h-px bg-sage-dark/20 flex-1"></div>
@@ -203,38 +205,61 @@ const Attire: React.FC = () => {
              <div className="h-px bg-sage-dark/20 flex-1"></div>
            </div>
            
-           <div className="grid md:grid-cols-2 gap-8 text-left">
-              
-              {/* FAQs Link (Replaces Adult Only Box) */}
-              <Link 
-                to="/faq" 
-                onClick={() => window.scrollTo({ top: 0, behavior: 'instant' })}
-                className="bg-paper p-8 rounded-xl border-t-4 border-sage-light shadow-sm hover:shadow-md transition-all group flex flex-col items-center text-center cursor-pointer relative overflow-hidden"
-              >
-                <div className="bg-sage-light/20 p-4 rounded-full mb-6 text-sage-dark group-hover:bg-sage-dark group-hover:text-white transition-colors duration-300">
-                  <HelpCircle size={32} />
-                </div>
-                <h3 className="font-heading text-xl text-sage-dark mb-4 uppercase tracking-wide font-bold group-hover:underline decoration-sage-light underline-offset-4">
-                  Questions?
-                </h3>
-                <p className="font-body text-gray-600 leading-relaxed mb-6">
-                   Visit our FAQs regarding kids, parking, and other essential details for the big day.
-                </p>
-                <span className="text-sage-dark font-bold text-xs uppercase tracking-widest flex items-center gap-2 group-hover:translate-x-1 transition-transform">
-                  View FAQs <ArrowRight size={14} />
-                </span>
-              </Link>
+           {/* UPDATED: Changed to 3 columns to fit the new Photo component */}
+           <div className="grid md:grid-cols-3 gap-6 text-left">
+             
+             {/* 1. FAQs Link */}
+             <Link 
+               to="/faq" 
+               onClick={() => window.scrollTo({ top: 0, behavior: 'instant' })}
+               className="bg-paper p-8 rounded-xl border-t-4 border-sage-light shadow-sm hover:shadow-md transition-all group flex flex-col items-center text-center cursor-pointer relative overflow-hidden"
+             >
+               <div className="bg-sage-light/20 p-4 rounded-full mb-6 text-sage-dark group-hover:bg-sage-dark group-hover:text-white transition-colors duration-300">
+                 <HelpCircle size={32} />
+               </div>
+               <h3 className="font-heading text-xl text-sage-dark mb-4 uppercase tracking-wide font-bold group-hover:underline decoration-sage-light underline-offset-4">
+                 Questions?
+               </h3>
+               <p className="font-body text-gray-600 leading-relaxed mb-6">
+                  Visit our FAQs regarding kids, parking, and other essential details for the big day.
+               </p>
+               <span className="text-sage-dark font-bold text-xs uppercase tracking-widest flex items-center gap-2 group-hover:translate-x-1 transition-transform mt-auto">
+                 View FAQs <ArrowRight size={14} />
+               </span>
+             </Link>
 
-              {/* Gifts Note */}
-              <div className="bg-paper p-8 rounded-xl border-t-4 border-beige-sand shadow-sm hover:shadow-md transition-shadow flex flex-col items-center text-center">
-                <div className="bg-beige-sand/20 p-4 rounded-full mb-6 text-brown-earth">
-                  <Gift size={32} />
-                </div>
-                <h3 className="font-heading text-xl text-brown-earth mb-4 uppercase tracking-wide">Preferred Gifts</h3>
-                <p className="font-body text-gray-600 leading-relaxed">
-                  As we begin our new life together, your love, prayers, and presence are what we treasure most. If you wish to bless us further, we'd be grateful for a monetary gift to help us start this new chapter.
-                </p>
-              </div>
+             {/* 2. NEW: Share Photos Component */}
+             <a 
+               href="https://drive.google.com/drive/folders/1coNXCymXWmVXWWzn8h7yMvPX2wpgutSY?usp=drive_link"
+               target="_blank"
+               rel="noopener noreferrer"
+               className="bg-paper p-8 rounded-xl border-t-4 border-sage-dark shadow-sm hover:shadow-md transition-all group flex flex-col items-center text-center cursor-pointer relative overflow-hidden"
+             >
+               <div className="bg-sage-dark/10 p-4 rounded-full mb-6 text-sage-dark group-hover:bg-sage-dark group-hover:text-white transition-colors duration-300">
+                 <Camera size={32} />
+               </div>
+               <h3 className="font-heading text-xl text-sage-dark mb-4 uppercase tracking-wide font-bold group-hover:underline decoration-sage-dark underline-offset-4">
+                 Share Moments
+               </h3>
+               <p className="font-body text-gray-600 leading-relaxed mb-6">
+                 We’d love to see the wedding through your eyes! Click here to upload your snaps to our shared album.
+               </p>
+               <span className="text-sage-dark font-bold text-xs uppercase tracking-widest flex items-center gap-2 group-hover:translate-x-1 transition-transform mt-auto">
+                 Upload Photos <ArrowRight size={14} />
+               </span>
+             </a>
+
+             {/* 3. Gifts Note */}
+             <div className="bg-paper p-8 rounded-xl border-t-4 border-beige-sand shadow-sm hover:shadow-md transition-shadow flex flex-col items-center text-center">
+               <div className="bg-beige-sand/20 p-4 rounded-full mb-6 text-brown-earth">
+                 <Gift size={32} />
+               </div>
+               <h3 className="font-heading text-xl text-brown-earth mb-4 uppercase tracking-wide">Preferred Gifts</h3>
+               <p className="font-body text-gray-600 leading-relaxed">
+                 As we begin our new life together, your love, prayers, and presence are what we treasure most. If you wish to bless us further, we'd be grateful for a monetary gift.
+               </p>
+             </div>
+             
            </div>
         </div>
 

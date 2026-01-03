@@ -21,14 +21,42 @@ const Hero: React.FC = () => {
 
   return (
     <section className="relative h-screen w-full overflow-hidden flex flex-col items-center justify-center text-center px-4">
+      
+      {/* ================= CSS STYLES ================= */}
+      <style>{`
+        /* 1. Parallax Fix for iOS (Keep this) */
+        .hero-bg {
+          background-attachment: scroll;
+        }
+        @media (hover: hover) and (pointer: fine) {
+          .hero-bg {
+            background-attachment: fixed;
+          }
+        }
+
+        /* 2. NEW: Responsive Positioning */
+        /* Mobile Default: Pan right (100%) and down 80px */
+        .hero-bg-pos {
+           background-position: 25% 80px; 
+        }
+
+        /* Desktop (md breakpoint): Center and down 80px */
+        @media (min-width: 768px) {
+          .hero-bg-pos {
+            background-position: center 80px;
+          }
+        }
+      `}</style>
+      {/* ============================================== */}
+
+
       {/* Parallax Background with Overlay */}
       <div 
-        // FIX: Changed 'bg-fixed' to 'bg-scroll md:bg-fixed'
-        className="absolute inset-0 z-0 bg-scroll md:bg-fixed bg-cover bg-no-repeat"
+        // FIX: Added 'hero-bg-pos' class here
+        className="hero-bg hero-bg-pos absolute inset-0 z-0 bg-cover bg-no-repeat"
         style={{ 
           backgroundImage: `url(${heroImage})`,
-          // Keep your offset, or use 'center top' for mobile if 80px feels too low
-          backgroundPosition: 'center 80px' 
+          // FIX: Removed inline backgroundPosition (it's now handled by the CSS classes above)
         }}
       >
         <div className="absolute inset-0 bg-sage-dark/40 mix-blend-multiply"></div>

@@ -22,7 +22,7 @@ const FAQ_SECTIONS: FaqSection[] = [
         question: "Where is the venue?",
         answer: (
           <span>
-            We’d love to celebrate our special day with you at Mahogany Place Tagaytay. You can <a href="https://ul.waze.com/ul?venue_id=79233165.792528258.945667&overview=yes&utm_campaign=default&utm_source=waze_website&utm_medium=lm_share_location" target="_blank" rel="noreferrer" className="text-sage-dark underline font-bold hover:text-sage-light">click here</a> to open it in Waze and <a href="https://www.google.com/maps/search/?api=1&query=Mahogany+Place+Tagaytay" target="_blank" rel="noreferrer" className="text-sage-dark underline font-bold hover:text-sage-light">here</a> to view it on Google Maps.
+            We’d love to celebrate our special day with you at Mahogany Place Tagaytay. You can <a href="https://ul.waze.com/ul?venue_id=79233165.792528259.3962899&overview=yes&utm_campaign=default&utm_source=waze_website&utm_medium=lm_share_location" target="_blank" rel="noreferrer" className="text-sage-dark underline font-bold hover:text-sage-light">click here</a> to open it in Waze and <a href="https://www.google.com/maps/search/?api=1&query=Mahogany+Place+Tagaytay" target="_blank" rel="noreferrer" className="text-sage-dark underline font-bold hover:text-sage-light">here</a> to view it on Google Maps.
           </span>
         )
       },
@@ -145,7 +145,7 @@ const FAQ_SECTIONS: FaqSection[] = [
           <span>
             Of course! We’d love to see the wedding through your eyes, so feel free to snap away. We just kindly ask that you don’t block our official photographers so they can capture the moments smoothly.
             <br /><br />
-            You can <a href="#" className="text-sage-dark underline font-bold hover:text-sage-light">click here</a> to upload your photos so we’ll be able to see your lovely shots. We’d also be so happy if you share them on social media using our hashtag <span className="font-bold">#WhenDestiNICAmeForJEROME</span>—don’t forget to tag us, we’ll definitely be checking it out!
+            You can <a href="https://drive.google.com/drive/folders/1coNXCymXWmVXWWzn8h7yMvPX2wpgutSY?usp=drive_link" className="text-sage-dark underline font-bold hover:text-sage-light">click here</a> to upload your photos so we’ll be able to see your lovely shots. We’d also be so happy if you share them on social media using our hashtag <span className="font-bold">#WhenDestiNICAmeForJEROME</span>—don’t forget to tag us, we’ll definitely be checking it out!
           </span>
         )
       },
