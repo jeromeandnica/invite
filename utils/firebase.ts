@@ -1,9 +1,24 @@
 
-// Import the functions you need from the SDKs you need
-import { initializeApp } from "firebase/app";
-import { getFirestore } from "firebase/firestore";
+import { initializeApp } from 'firebase/app';
+import { initializeFirestore } from 'firebase/firestore';
 
-// Your web app's Firebase configuration
+/**
+ * ! ACTION REQUIRED: FIRESTORE SECURITY RULES !
+ * ---------------------------------------------
+ * You MUST apply these rules in your Firebase Console to fix the "permissions" error.
+ * Location: Firebase Console > Firestore Database > Rules
+ * 
+ * rules_version = '2';
+ * service cloud.firestore {
+ *   match /databases/{database}/documents {
+ *     match /guest_groups/{groupId} {
+ *       allow read: if true;
+ *       allow write: if true;
+ *     }
+ *   }
+ * }
+ */
+
 const firebaseConfig = {
   apiKey: "AIzaSyAZfUFKqbhm2k-mWMN8ZCeKfPTLBCPMBiA",
   authDomain: "jerome-nica-wedding.firebaseapp.com",
@@ -14,23 +29,23 @@ const firebaseConfig = {
   measurementId: "G-6BPHTM70E8"
 };
 
-// Initialize Firebase
 const app = initializeApp(firebaseConfig);
 
-// Initialize Firestore
-export const db = getFirestore(app);
+// Fix for [code=unavailable] error: Use initializeFirestore with experimentalForceLongPolling 
+// to ensure connection stability in environments where WebSockets might be restricted.
+export const db = initializeFirestore(app, {
+  experimentalForceLongPolling: true,
+  useFetchStreams: false,
+});
 
-// Types for our Data Model
 export interface GuestMember {
   name: string;
   status: 'pending' | 'accepted' | 'declined';
 }
 
 export interface GuestGroup {
-  id: string; // Document ID
+  id: string;
   groupName: string;
-  // searchTags contains lowercase full names for lookup
   searchTags?: string[];
-  passcode?: string; // Keeping optional for backward compatibility if needed
   members: GuestMember[];
 }

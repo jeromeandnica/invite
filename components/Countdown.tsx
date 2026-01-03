@@ -1,6 +1,7 @@
 
 import React, { useState, useEffect } from 'react';
 import { Calendar, Clock, MapPin, Navigation } from 'lucide-react';
+import EnchantedReveal from './EnchantedReveal.tsx';
 
 const Countdown: React.FC = () => {
   const [timeLeft, setTimeLeft] = useState({ days: 0, hours: 0, minutes: 0, seconds: 0 });
@@ -39,19 +40,21 @@ const Countdown: React.FC = () => {
       <div className="container mx-auto px-4 text-center relative z-10">
         
         {/* Date & Time Header */}
-        <div className="mb-12 space-y-4">
-          <div className="flex flex-col md:flex-row items-center justify-center gap-6 text-sage-dark">
-             <div className="flex items-center gap-3">
-                <Calendar className="w-8 h-8 text-beige-sand" />
-                <span className="font-heading text-3xl md:text-5xl">March 21, 2026</span>
-             </div>
-             <div className="hidden md:block w-px h-12 bg-sage-light/30"></div>
-             <div className="flex items-center gap-3">
-                <Clock className="w-8 h-8 text-beige-sand" />
-                <span className="font-heading text-3xl md:text-5xl">3:00 PM</span>
-             </div>
-          </div>
-          <p className="font-body text-gray-500 italic text-lg">Saturday</p>
+        <div className="mb-12 flex justify-center">
+          <EnchantedReveal width="100%">
+            <div className="flex flex-col md:flex-row items-center justify-center gap-6 text-sage-dark">
+              <div className="flex items-center gap-3">
+                  <Calendar className="w-8 h-8 text-beige-sand" />
+                  <span className="font-heading text-3xl md:text-5xl">March 21, 2026</span>
+              </div>
+              <div className="hidden md:block w-px h-12 bg-sage-light/30"></div>
+              <div className="flex items-center gap-3">
+                  <Clock className="w-8 h-8 text-beige-sand" />
+                  <span className="font-heading text-3xl md:text-5xl">3:00 PM</span>
+              </div>
+            </div>
+            <p className="font-body text-gray-500 italic text-lg mt-4">Saturday</p>
+          </EnchantedReveal>
         </div>
 
         <div className="w-16 h-1 bg-beige-sand mx-auto mb-12 rounded-full"></div>
@@ -80,12 +83,17 @@ const Countdown: React.FC = () => {
 
         {/* Venue & Map Section (The "Where") */}
         <div className="max-w-6xl mx-auto">
-            <div className="text-center mb-8">
-                <h2 className="font-script text-6xl text-sage-dark mb-4">The Venue</h2>
-                <div className="flex items-center justify-center gap-2 text-brown-earth">
-                    <MapPin className="w-5 h-5" />
-                    <p className="font-heading text-xl uppercase tracking-wide">Mahogany Place, Tagaytay</p>
-                </div>
+            <div className="text-center mb-8 flex flex-col items-center">
+                <EnchantedReveal>
+                  <h2 className="font-script text-6xl text-sage-dark mb-4">The Venue</h2>
+                </EnchantedReveal>
+                
+                <EnchantedReveal delay={0.2}>
+                  <div className="flex items-center justify-center gap-2 text-brown-earth">
+                      <MapPin className="w-5 h-5" />
+                      <p className="font-heading text-xl uppercase tracking-wide">Mahogany Place, Tagaytay</p>
+                  </div>
+                </EnchantedReveal>
             </div>
 
             <div className="bg-white p-4 rounded-xl shadow-lg border border-sage-light/20">

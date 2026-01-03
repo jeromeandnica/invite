@@ -1,3 +1,4 @@
+
 import React from 'react';
 import { HashRouter, Routes, Route } from 'react-router-dom';
 import Navbar from './components/Navbar';
@@ -26,7 +27,7 @@ const Home: React.FC = () => (
       <Attire />
     </ScrollReveal>
     
-    <ScrollReveal>
+    <ScrollReveal className="relative z-30">
       <Rsvp />
     </ScrollReveal>
   </>

@@ -1,10 +1,24 @@
 
 import React from 'react';
 import { ArrowDown } from 'lucide-react';
+import EnchantedReveal from './EnchantedReveal.tsx';
 
-import heroImage from '../assets/hero.jpg';
+// ==================================================================================
+// !!! REPLACE THIS IMAGE: MAIN HERO BACKGROUND !!!
+// Description: The large background image seen immediately when loading the site.
+// Recommended: High resolution (1920x1080+), Landscape orientation.
+// ==================================================================================
+const heroImage = "https://images.unsplash.com/photo-1518531933037-91b2f5f229cc?q=80&w=2574&auto=format&fit=crop";
 
 const Hero: React.FC = () => {
+  const handleScrollToRsvp = (e: React.MouseEvent<HTMLAnchorElement>) => {
+    e.preventDefault();
+    const element = document.getElementById('rsvp');
+    if (element) {
+      element.scrollIntoView({ behavior: 'smooth' });
+    }
+  };
+
   return (
     <section className="relative h-screen w-full overflow-hidden flex flex-col items-center justify-center text-center px-4">
       {/* Parallax Background with Overlay */}
@@ -17,26 +31,35 @@ const Hero: React.FC = () => {
       </div>
 
       {/* Content */}
-      <div className="relative z-10 text-cream-soft space-y-8 max-w-4xl mx-auto animate-fade-in-up pt-10">
-        <div className="flex flex-col items-center">
+      <div className="relative z-10 text-cream-soft space-y-2 max-w-4xl mx-auto pt-10 flex flex-col items-center">
+        <EnchantedReveal width="fit-content">
           <h1 className="font-script text-8xl md:text-[10rem] drop-shadow-lg leading-none">
             Jerome
           </h1>
-          <h1 className="font-script text-7xl md:text-[8rem] drop-shadow-lg leading-none mt-[-10px] md:mt-[-30px] ml-16 md:ml-32">
+        </EnchantedReveal>
+        
+        <EnchantedReveal width="fit-content" delay={0.2}>
+          <h1 className="font-script text-7xl md:text-[8rem] drop-shadow-lg leading-none md:mt-[-30px] md:ml-32">
             & Nica
           </h1>
-        </div>
+        </EnchantedReveal>
         
-        <div className="space-y-4">
-          <p className="font-heading text-xl md:text-3xl tracking-widest uppercase border-t border-b border-cream-soft/50 py-3 inline-block">
-            Are Getting Married!
-          </p>
+        <div className="mt-8">
+          <EnchantedReveal width="fit-content" delay={0.6}>
+            <p className="font-heading text-xl md:text-3xl tracking-widest uppercase border-t border-b border-cream-soft/50 py-3 inline-block">
+              Are Getting Married!
+            </p>
+          </EnchantedReveal>
         </div>
       </div>
 
       {/* Scroll Indicator */}
       <div className="absolute bottom-10 z-10 animate-bounce">
-        <a href="#countdown" className="text-cream-soft opacity-80 hover:opacity-100 transition-opacity">
+        <a 
+          href="#rsvp" 
+          onClick={handleScrollToRsvp}
+          className="text-cream-soft opacity-80 hover:opacity-100 transition-opacity cursor-pointer"
+        >
           <ArrowDown size={32} />
         </a>
       </div>

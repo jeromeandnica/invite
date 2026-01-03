@@ -1,7 +1,7 @@
 
 import React from 'react';
-import { ENTOURAGE_DATA } from '../constants';
-import flowerVine from '../assets/flower.png';
+import { ENTOURAGE_DATA } from '../constants.ts';
+import EnchantedReveal from './EnchantedReveal.tsx';
 
 // Consistent styling constants for uniform font sizes
 const NAME_CLASS = "font-body text-lg md:text-xl text-cream-soft";
@@ -23,6 +23,34 @@ const SimpleFlowerSVG = ({ className }: { className?: string }) => (
     <path d="M62 50 C80 50 80 70 60 70 C52 70 50 58 50 50" />
     <path d="M38 50 C20 50 20 30 40 30 C48 30 50 42 50 50" />
     <path d="M38 50 C20 50 20 70 40 70 C48 70 50 58 50 50" />
+  </svg>
+);
+
+// 2. Vertically Long Vine Chain for Sides
+const VerticalVineSVG = ({ className }: { className?: string }) => (
+  <svg viewBox="0 0 60 300" className={className} fill="none" stroke="currentColor" strokeWidth="1.5" preserveAspectRatio="none">
+    {/* Main Stem - Winding curve */}
+    <path d="M30,0 Q40,50 30,100 T30,200 T30,300" opacity="0.6" />
+    
+    {/* Leaves Set 1 */}
+    <path d="M30,50 Q10,40 5,65" fill="currentColor" fillOpacity="0.1" />
+    <path d="M30,50 Q10,40 5,65" />
+    
+    {/* Leaves Set 2 */}
+    <path d="M30,100 Q50,90 55,115" fill="currentColor" fillOpacity="0.1" />
+    <path d="M30,100 Q50,90 55,115" />
+    
+    {/* Leaves Set 3 */}
+    <path d="M30,150 Q10,140 5,165" fill="currentColor" fillOpacity="0.1" />
+    <path d="M30,150 Q10,140 5,165" />
+    
+    {/* Leaves Set 4 */}
+    <path d="M30,200 Q50,190 55,215" fill="currentColor" fillOpacity="0.1" />
+    <path d="M30,200 Q50,190 55,215" />
+    
+    {/* Leaves Set 5 */}
+    <path d="M30,250 Q10,240 5,265" fill="currentColor" fillOpacity="0.1" />
+    <path d="M30,250 Q10,240 5,265" />
   </svg>
 );
 
@@ -52,7 +80,7 @@ const SideBorderColumn: React.FC<{ position: 'left' | 'right' }> = ({ position }
     >
       {repetitions.map((_, index) => (
         <div key={index} className="flex-grow w-12 md:w-20 h-auto min-h-[200px]">
-             <img src={flowerVine} alt="Flower vine decoration" style={{ width: '100px' }} />
+             <VerticalVineSVG className={`w-full h-full ${position === 'right' ? 'scale-x-[-1]' : ''}`} />
         </div>
       ))}
     </div>
@@ -86,7 +114,11 @@ const Entourage: React.FC = () => {
       <SideBorderColumn position="right" />
 
       <div className="container mx-auto px-4 text-center relative z-10">
-        <h2 className="font-script text-6xl md:text-7xl mb-10 text-beige-sand">The Entourage</h2>
+        <div className="flex justify-center mb-10">
+          <EnchantedReveal>
+            <h2 className="font-script text-6xl md:text-7xl text-beige-sand">The Entourage</h2>
+          </EnchantedReveal>
+        </div>
 
         {/* Groom & Bride - Top Section */}
         <div className="flex flex-col items-center justify-center gap-4 mb-12">

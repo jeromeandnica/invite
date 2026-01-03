@@ -5,7 +5,7 @@ export const ENTOURAGE_DATA = {
     bride: ["Mr. Jose Victor A. Espineli", "Mrs. Jazmine G. Espineli"]
   },
   grandparents: {
-    bride: ["Jose Espineli", "Esperanza Espineli"]
+    bride: ["Mr. Jose Espineli", "Mrs. Esperanza Espineli"]
   },
   attendants: {
     bestMan: "Joshua Carmelo Raymundo",

@@ -1,6 +1,15 @@
+
 import React, { useState } from 'react';
 import { Menu, X } from 'lucide-react';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
+import { motion, AnimatePresence } from 'framer-motion';
+
+// ==================================================================================
+// !!! REPLACE THIS IMAGE: NAVBAR LOGO !!!
+// Description: The logo displayed in the top left of the navigation bar.
+// Recommended: Transparent PNG, approx height 50-80px.
+// ==================================================================================
+const logoImage = "https://placehold.co/150x60/F4F0E6/56644B?text=J%26N+Logo";
 
 const Navbar: React.FC = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -38,9 +47,13 @@ const Navbar: React.FC = () => {
         <Link 
           to="/"
           onClick={handleNavClick}
-          className="font-script text-3xl md:text-4xl text-sage-dark hover:opacity-80 transition-opacity"
+          className="hover:opacity-80 transition-opacity flex items-center"
         >
-          J&N
+          <img 
+            src={logoImage} 
+            alt="Jerome & Nica Logo" 
+            className="h-10 md:h-12 w-auto object-contain" 
+          />
         </Link>
 
         {/* Desktop Menu */}
@@ -48,7 +61,7 @@ const Navbar: React.FC = () => {
           <Link 
             to="/"
             onClick={handleNavClick}
-            className={`font-heading text-sm uppercase tracking-widest hover:text-sage-dark transition-colors ${
+            className={`font-heading text-sm uppercase tracking-widest hover:text-sage-dark transition-colors duration-200 ${
               isHome ? 'text-sage-dark font-bold border-b-2 border-sage-dark pb-1' : 'text-gray-500'
             }`}
           >
@@ -57,7 +70,7 @@ const Navbar: React.FC = () => {
           <Link 
             to="/faq"
             onClick={handleNavClick}
-            className={`font-heading text-sm uppercase tracking-widest hover:text-sage-dark transition-colors ${
+            className={`font-heading text-sm uppercase tracking-widest hover:text-sage-dark transition-colors duration-200 ${
               isFaq ? 'text-sage-dark font-bold border-b-2 border-sage-dark pb-1' : 'text-gray-500'
             }`}
           >
@@ -66,7 +79,7 @@ const Navbar: React.FC = () => {
           {/* RSVP Button */}
           <button 
             onClick={handleRsvpClick}
-            className="bg-sage-dark text-white px-6 py-2 rounded-full font-heading text-xs uppercase tracking-wider hover:bg-sage-dark/90 transition-colors shadow-md"
+            className="bg-sage-dark text-white px-6 py-2 rounded-full font-heading text-xs uppercase tracking-wider hover:bg-sage-dark/90 transition-all duration-200 shadow-md active:scale-95"
           >
             RSVP
           </button>
@@ -74,43 +87,55 @@ const Navbar: React.FC = () => {
 
         {/* Mobile Menu Button */}
         <div className="md:hidden">
-          <button onClick={() => setIsOpen(!isOpen)} className="text-sage-dark p-2">
+          <button 
+            onClick={() => setIsOpen(!isOpen)} 
+            className="text-sage-dark p-2 transition-transform duration-200 active:scale-90"
+            aria-label="Toggle menu"
+          >
             {isOpen ? <X size={28} /> : <Menu size={28} />}
           </button>
         </div>
       </div>
 
-      {/* Mobile Menu Dropdown */}
-      {isOpen && (
-        <div className="md:hidden bg-cream-soft border-t border-sage-light/20 animate-fade-in absolute w-full shadow-lg">
-          <div className="flex flex-col py-4 px-6 space-y-4">
-            <Link 
-              to="/"
-              onClick={handleNavClick}
-              className={`text-left font-heading text-sm uppercase tracking-widest py-2 ${
-                isHome ? 'text-sage-dark font-bold' : 'text-gray-600'
-              }`}
-            >
-              Home
-            </Link>
-            <Link 
-              to="/faq"
-              onClick={handleNavClick}
-              className={`text-left font-heading text-sm uppercase tracking-widest py-2 ${
-                isFaq ? 'text-sage-dark font-bold' : 'text-gray-600'
-              }`}
-            >
-              FAQs
-            </Link>
-            <button 
-              onClick={handleRsvpClick}
-              className="bg-sage-dark text-white px-6 py-3 rounded text-center font-heading text-xs uppercase tracking-wider"
-            >
-              RSVP
-            </button>
-          </div>
-        </div>
-      )}
+      {/* Mobile Menu Dropdown with snappier Framer Motion animation */}
+      <AnimatePresence>
+        {isOpen && (
+          <motion.div 
+            initial={{ opacity: 0, height: 0, y: -10 }}
+            animate={{ opacity: 1, height: 'auto', y: 0 }}
+            exit={{ opacity: 0, height: 0, y: -10 }}
+            transition={{ duration: 0.2, ease: "easeOut" }}
+            className="md:hidden bg-cream-soft border-t border-sage-light/20 absolute w-full shadow-lg overflow-hidden"
+          >
+            <div className="flex flex-col py-6 px-6 space-y-4">
+              <Link 
+                to="/"
+                onClick={handleNavClick}
+                className={`text-left font-heading text-sm uppercase tracking-widest py-2 transition-colors ${
+                  isHome ? 'text-sage-dark font-bold' : 'text-gray-600'
+                }`}
+              >
+                Home
+              </Link>
+              <Link 
+                to="/faq"
+                onClick={handleNavClick}
+                className={`text-left font-heading text-sm uppercase tracking-widest py-2 transition-colors ${
+                  isFaq ? 'text-sage-dark font-bold' : 'text-gray-600'
+                }`}
+              >
+                FAQs
+              </Link>
+              <button 
+                onClick={handleRsvpClick}
+                className="bg-sage-dark text-white px-6 py-4 rounded text-center font-heading text-xs uppercase tracking-wider shadow-md active:bg-sage-dark/80"
+              >
+                RSVP
+              </button>
+            </div>
+          </motion.div>
+        )}
+      </AnimatePresence>
     </nav>
   );
 };
