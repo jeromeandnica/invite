@@ -4,12 +4,13 @@ import { Menu, X } from 'lucide-react';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { motion, AnimatePresence } from 'framer-motion';
 
+import logoImg from '../assets/logo.png'; 
 // ==================================================================================
 // !!! REPLACE THIS IMAGE: NAVBAR LOGO !!!
 // Description: The logo displayed in the top left of the navigation bar.
 // Recommended: Transparent PNG, approx height 50-80px.
 // ==================================================================================
-const logoImage = "https://placehold.co/150x60/F4F0E6/56644B?text=J%26N+Logo";
+const logoImage = logoImg;
 
 const Navbar: React.FC = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -52,7 +53,7 @@ const Navbar: React.FC = () => {
           <img 
             src={logoImage} 
             alt="Jerome & Nica Logo" 
-            className="h-10 md:h-12 w-auto object-contain" 
+            className="h-14 md:h-12 w-auto object-contain" 
           />
         </Link>
 

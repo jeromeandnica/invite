@@ -1,14 +1,14 @@
-
 import React from 'react';
 import { ArrowDown } from 'lucide-react';
 import EnchantedReveal from './EnchantedReveal.tsx';
+import heroImg from '../assets/hero-image.jpg';
 
 // ==================================================================================
 // !!! REPLACE THIS IMAGE: MAIN HERO BACKGROUND !!!
 // Description: The large background image seen immediately when loading the site.
 // Recommended: High resolution (1920x1080+), Landscape orientation.
 // ==================================================================================
-const heroImage = "https://images.unsplash.com/photo-1518531933037-91b2f5f229cc?q=80&w=2574&auto=format&fit=crop";
+const heroImage = heroImg;
 
 const Hero: React.FC = () => {
   const handleScrollToRsvp = (e: React.MouseEvent<HTMLAnchorElement>) => {
@@ -23,8 +23,13 @@ const Hero: React.FC = () => {
     <section className="relative h-screen w-full overflow-hidden flex flex-col items-center justify-center text-center px-4">
       {/* Parallax Background with Overlay */}
       <div 
-        className="absolute inset-0 z-0 bg-fixed bg-center bg-cover"
-        style={{ backgroundImage: `url(${heroImage})` }}
+        // FIX: Changed 'bg-fixed' to 'bg-scroll md:bg-fixed'
+        className="absolute inset-0 z-0 bg-scroll md:bg-fixed bg-cover bg-no-repeat"
+        style={{ 
+          backgroundImage: `url(${heroImage})`,
+          // Keep your offset, or use 'center top' for mobile if 80px feels too low
+          backgroundPosition: 'center 80px' 
+        }}
       >
         <div className="absolute inset-0 bg-sage-dark/40 mix-blend-multiply"></div>
         <div className="absolute inset-0 bg-black/20"></div>

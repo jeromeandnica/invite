@@ -6,19 +6,21 @@ import EnchantedReveal from './EnchantedReveal.tsx';
 import ImageModal from './ImageModal.tsx';
 import { Link } from 'react-router-dom';
 
+import sponsorImg from '../assets/sponsor-attire.png'; 
+import guestImg from '../assets/guest-attire.png';
 // ==================================================================================
 // !!! REPLACE THIS IMAGE: SPONSOR ATTIRE REFERENCE !!!
 // Description: The reference photo for "Ninong/Ninang" attire.
 // Recommended: Landscape orientation (approx 3:2 ratio).
 // ==================================================================================
-const sponsorAttireImage = "https://images.unsplash.com/photo-1596356494918-62d9472f883f?q=80&w=2071&auto=format&fit=crop";
+const sponsorAttireImage = sponsorImg;
 
 // ==================================================================================
 // !!! REPLACE THIS IMAGE: GUEST ATTIRE REFERENCE !!!
 // Description: The reference photo for "Guests" attire.
 // Recommended: Landscape orientation (approx 3:2 ratio).
 // ==================================================================================
-const guestAttireImage = "https://images.unsplash.com/photo-1625936350325-1e3c8801d904?q=80&w=2070&auto=format&fit=crop";
+const guestAttireImage = guestImg;
 
 // Custom SVG for Dress & Suit to replace generic Shirt icon
 const DressSuitIcon = ({ className }: { className?: string }) => (

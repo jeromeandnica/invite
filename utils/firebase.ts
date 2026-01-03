@@ -35,7 +35,6 @@ const app = initializeApp(firebaseConfig);
 // to ensure connection stability in environments where WebSockets might be restricted.
 export const db = initializeFirestore(app, {
   experimentalForceLongPolling: true,
-  useFetchStreams: false,
 });
 
 export interface GuestMember {

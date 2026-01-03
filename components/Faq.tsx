@@ -22,7 +22,7 @@ const FAQ_SECTIONS: FaqSection[] = [
         question: "Where is the venue?",
         answer: (
           <span>
-            We’d love to celebrate our special day with you at Mahogany Place Tagaytay. You can <a href="https://www.waze.com/live-map/directions/ph/calabarzon/tagaytay-city/mahogany-place-tagaytay?to=place.ChIJhWUM2ZZ3vTMRz_UmOcqHfuw$0" target="_blank" rel="noreferrer" className="text-sage-dark underline font-bold hover:text-sage-light">click here</a> to open it in Waze and <a href="https://www.google.com/maps/search/?api=1&query=Mahogany+Place+Tagaytay" target="_blank" rel="noreferrer" className="text-sage-dark underline font-bold hover:text-sage-light">here</a> to view it on Google Maps.
+            We’d love to celebrate our special day with you at Mahogany Place Tagaytay. You can <a href="https://ul.waze.com/ul?venue_id=79233165.792528258.945667&overview=yes&utm_campaign=default&utm_source=waze_website&utm_medium=lm_share_location" target="_blank" rel="noreferrer" className="text-sage-dark underline font-bold hover:text-sage-light">click here</a> to open it in Waze and <a href="https://www.google.com/maps/search/?api=1&query=Mahogany+Place+Tagaytay" target="_blank" rel="noreferrer" className="text-sage-dark underline font-bold hover:text-sage-light">here</a> to view it on Google Maps.
           </span>
         )
       },
@@ -230,40 +230,49 @@ const Faq: React.FC = () => {
           ))}
         </div>
 
-        <div className="mt-16 text-center pb-12 flex flex-col items-center">
+        {/* Contact Section optimized for smaller, neater rectangular proportions */}
+        <div className="mt-16 text-center pb-16 flex flex-col items-center">
           <EnchantedReveal delay={0.2}>
-            <p className="font-body text-gray-500 mb-8 text-lg italic">Still have questions? We'd love to help!</p>
+            <p className="font-body text-[#8e98a5] italic mb-8 text-xl">Still have questions? We'd love to help!</p>
             
-            <div className="flex flex-col md:flex-row items-center justify-center gap-6">
-              {/* Mobile/SMS */}
-              <a 
-                href="sms:+639000000000" 
-                className="group flex items-center gap-4 px-8 py-5 bg-white border border-sage-light/30 rounded-xl shadow-sm hover:shadow-lg hover:-translate-y-1 transition-all duration-300 w-full md:w-auto min-w-[280px]"
-              >
-                <div className="bg-sage-light/10 p-3 rounded-full text-sage-dark group-hover:bg-sage-dark group-hover:text-white transition-colors">
-                  <Phone size={24} />
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-4 max-w-4xl mx-auto w-full px-4">
+              
+              {/* Call or Text Card - Small & Neat */}
+              <div className="bg-white border border-gray-100 rounded-[2rem] px-8 py-10 shadow-sm flex flex-col items-center justify-center min-h-[240px]">
+                <div className="bg-[#f4f6f2] p-4 rounded-full text-[#56644b] mb-4">
+                  <Phone size={28} strokeWidth={1.5} />
                 </div>
-                <div className="text-left">
-                  <p className="font-heading text-xs uppercase tracking-widest text-gray-400 font-bold mb-1">Call or Text</p>
-                  <p className="font-body text-sage-dark text-lg font-bold">09XX-XXX-XXXX</p>
-                </div>
-              </a>
+                <p className="font-heading text-[10px] uppercase tracking-[0.2em] text-[#8e98a5] font-bold mb-2">Call or Text</p>
+                <p className="font-heading text-3xl text-[#56644b] font-bold">0936-041-5271</p>
+              </div>
 
-              {/* Facebook */}
-              <a 
-                href="https://facebook.com"
-                target="_blank"
-                rel="noopener noreferrer" 
-                className="group flex items-center gap-4 px-8 py-5 bg-white border border-sage-light/30 rounded-xl shadow-sm hover:shadow-lg hover:-translate-y-1 transition-all duration-300 w-full md:w-auto min-w-[280px]"
-              >
-                <div className="bg-sage-light/10 p-3 rounded-full text-sage-dark group-hover:bg-sage-dark group-hover:text-white transition-colors">
-                  <Facebook size={24} />
+              {/* Connect on Facebook Card - Small & Neat */}
+              <div className="bg-white border border-gray-100 rounded-[2rem] px-8 py-10 shadow-sm flex flex-col items-center justify-center min-h-[240px]">
+                <div className="bg-[#f4f6f2] p-4 rounded-full text-[#56644b] mb-4">
+                  <Facebook size={28} strokeWidth={1.5} />
                 </div>
-                <div className="text-left">
-                  <p className="font-heading text-xs uppercase tracking-widest text-gray-400 font-bold mb-1">Social Media</p>
-                  <p className="font-body text-sage-dark text-lg font-bold">Jerome & Nica</p>
+                <p className="font-heading text-[10px] uppercase tracking-[0.2em] text-[#8e98a5] font-bold mb-5">Connect on Facebook</p>
+                
+                <div className="flex gap-3 w-full">
+                   <a 
+                     href="https://www.facebook.com/jerome.sumilang.9"
+                     target="_blank"
+                     rel="noopener noreferrer"
+                     className="flex-1 bg-[#56644b] text-white px-3 py-4 rounded-2xl font-heading text-[10px] uppercase tracking-[0.1em] font-bold hover:brightness-110 transition-all shadow-md flex items-center justify-center text-center leading-tight min-h-[54px]"
+                   >
+                     Message<br/>Jerome
+                   </a>
+                   <a 
+                     href="https://www.facebook.com/nicaespineli"
+                     target="_blank"
+                     rel="noopener noreferrer"
+                     className="flex-1 bg-[#c1aa87] text-white px-3 py-4 rounded-2xl font-heading text-[10px] uppercase tracking-[0.1em] font-bold hover:brightness-110 transition-all shadow-md flex items-center justify-center text-center leading-tight min-h-[54px]"
+                   >
+                     Message<br/>Nica
+                   </a>
                 </div>
-              </a>
+              </div>
+
             </div>
           </EnchantedReveal>
         </div>

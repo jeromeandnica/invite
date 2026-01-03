@@ -1,13 +1,20 @@
 
 import React from 'react';
-import { ENTOURAGE_DATA } from '../constants.ts';
-import EnchantedReveal from './EnchantedReveal.tsx';
+import { ENTOURAGE_DATA } from '../constants';
+import EnchantedReveal from './EnchantedReveal';
+import flowerImg from '../assets/flower.png'; 
+// ==================================================================================
+// !!! REPLACE THIS IMAGE: VINE PATTERN SIDE BORDER !!!
+// Description: A decorative vine or leaf pattern used for the entourage section side borders.
+// Recommended: A transparent PNG or a pattern that looks good when repeated vertically.
+// ==================================================================================
+const vinePatternImage = flowerImg;
 
 // Consistent styling constants for uniform font sizes
 const NAME_CLASS = "font-body text-lg md:text-xl text-cream-soft";
 const ROLE_CLASS = "font-heading text-sm md:text-base text-sage-light uppercase tracking-wider mb-1";
 
-// --- SVG COMPONENTS ---
+// --- UI COMPONENTS ---
 
 // 1. Round, Simple Flower for Dividers
 const SimpleFlowerSVG = ({ className }: { className?: string }) => (
@@ -26,35 +33,6 @@ const SimpleFlowerSVG = ({ className }: { className?: string }) => (
   </svg>
 );
 
-// 2. Vertically Long Vine Chain for Sides
-const VerticalVineSVG = ({ className }: { className?: string }) => (
-  <svg viewBox="0 0 60 300" className={className} fill="none" stroke="currentColor" strokeWidth="1.5" preserveAspectRatio="none">
-    {/* Main Stem - Winding curve */}
-    <path d="M30,0 Q40,50 30,100 T30,200 T30,300" opacity="0.6" />
-    
-    {/* Leaves Set 1 */}
-    <path d="M30,50 Q10,40 5,65" fill="currentColor" fillOpacity="0.1" />
-    <path d="M30,50 Q10,40 5,65" />
-    
-    {/* Leaves Set 2 */}
-    <path d="M30,100 Q50,90 55,115" fill="currentColor" fillOpacity="0.1" />
-    <path d="M30,100 Q50,90 55,115" />
-    
-    {/* Leaves Set 3 */}
-    <path d="M30,150 Q10,140 5,165" fill="currentColor" fillOpacity="0.1" />
-    <path d="M30,150 Q10,140 5,165" />
-    
-    {/* Leaves Set 4 */}
-    <path d="M30,200 Q50,190 55,215" fill="currentColor" fillOpacity="0.1" />
-    <path d="M30,200 Q50,190 55,215" />
-    
-    {/* Leaves Set 5 */}
-    <path d="M30,250 Q10,240 5,265" fill="currentColor" fillOpacity="0.1" />
-    <path d="M30,250 Q10,240 5,265" />
-  </svg>
-);
-
-
 // --- COMPOSITES ---
 
 // Divider Component
@@ -66,23 +44,23 @@ const DividerFlower = () => (
   </div>
 );
 
-// Side Border Component
+// Side Border Component using Image Placeholder
 const SideBorderColumn: React.FC<{ position: 'left' | 'right' }> = ({ position }) => {
-  // Create an array to fill the height of the section
-  // Increased count to ensure chain connectivity
-  const repetitions = Array(6).fill(null);
-  
   return (
     <div 
-      className={`absolute top-0 bottom-0 flex flex-col items-center overflow-hidden h-full z-0 text-cream-soft opacity-10 pointer-events-none ${
-        position === 'left' ? 'left-0 pl-2 md:pl-8' : 'right-0 pr-2 md:pr-8'
+      className={`absolute top-0 bottom-0 w-24 md:w-48 z-0 pointer-events-none opacity-20 overflow-hidden ${
+        position === 'left' ? 'left-0' : 'right-0'
       }`}
     >
-      {repetitions.map((_, index) => (
-        <div key={index} className="flex-grow w-12 md:w-20 h-auto min-h-[200px]">
-             <VerticalVineSVG className={`w-full h-full ${position === 'right' ? 'scale-x-[-1]' : ''}`} />
-        </div>
-      ))}
+      <div 
+        className={`w-full h-full bg-repeat-y bg-contain ${position === 'right' ? 'scale-x-[-1]' : ''}`}
+        style={{ 
+          backgroundImage: `url(${vinePatternImage})`,
+          backgroundSize: '100% auto'
+        }}
+      />
+      {/* Softening overlay to blend edges */}
+      <div className={`absolute inset-0 bg-gradient-to-${position === 'left' ? 'r' : 'l'} from-transparent to-sage-dark/10`}></div>
     </div>
   );
 };
@@ -109,7 +87,7 @@ const Entourage: React.FC = () => {
   return (
     <section id="entourage" className="py-24 bg-sage-dark text-cream-soft relative overflow-hidden">
       
-      {/* Repeating Floral Side Borders */}
+      {/* Floral Side Borders using Images */}
       <SideBorderColumn position="left" />
       <SideBorderColumn position="right" />
 
