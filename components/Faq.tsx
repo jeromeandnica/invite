@@ -1,4 +1,3 @@
-
 import React, { useState, useEffect } from 'react';
 import { ChevronDown, HelpCircle, Phone, Facebook } from 'lucide-react';
 import EnchantedReveal from './EnchantedReveal.tsx';
@@ -205,7 +204,7 @@ const Faq: React.FC = () => {
                           className="w-full flex items-start md:items-center justify-between p-6 text-left focus:outline-none gap-4"
                         >
                           <span className={`font-heading text-base md:text-lg text-sage-dark leading-snug ${isOpen ? 'font-bold' : 'font-medium'}`}>
-                            {index + 1}. {item.question}
+                            {item.question}
                           </span>
                           <div className={`flex-shrink-0 text-beige-sand transition-transform duration-300 mt-1 md:mt-0 ${isOpen ? 'rotate-180' : ''}`}>
                             <ChevronDown size={20} />
@@ -254,22 +253,22 @@ const Faq: React.FC = () => {
                 <p className="font-heading text-[10px] uppercase tracking-[0.2em] text-[#8e98a5] font-bold mb-5">Connect on Facebook</p>
                 
                 <div className="flex gap-3 w-full">
-                   <a 
-                     href="https://www.facebook.com/jerome.sumilang.9"
-                     target="_blank"
-                     rel="noopener noreferrer"
-                     className="flex-1 bg-[#56644b] text-white px-3 py-4 rounded-2xl font-heading text-[10px] uppercase tracking-[0.1em] font-bold hover:brightness-110 transition-all shadow-md flex items-center justify-center text-center leading-tight min-h-[54px]"
-                   >
-                     Message<br/>Jerome
-                   </a>
-                   <a 
-                     href="https://www.facebook.com/nicaespineli"
-                     target="_blank"
-                     rel="noopener noreferrer"
-                     className="flex-1 bg-[#c1aa87] text-white px-3 py-4 rounded-2xl font-heading text-[10px] uppercase tracking-[0.1em] font-bold hover:brightness-110 transition-all shadow-md flex items-center justify-center text-center leading-tight min-h-[54px]"
-                   >
-                     Message<br/>Nica
-                   </a>
+                    <a 
+                      href="https://www.facebook.com/jerome.sumilang.9"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="flex-1 bg-[#56644b] text-white px-3 py-4 rounded-2xl font-heading text-[10px] uppercase tracking-[0.1em] font-bold hover:brightness-110 transition-all shadow-md flex items-center justify-center text-center leading-tight min-h-[54px]"
+                    >
+                      Message<br/>Jerome
+                    </a>
+                    <a 
+                      href="https://www.facebook.com/nicaespineli"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="flex-1 bg-[#c1aa87] text-white px-3 py-4 rounded-2xl font-heading text-[10px] uppercase tracking-[0.1em] font-bold hover:brightness-110 transition-all shadow-md flex items-center justify-center text-center leading-tight min-h-[54px]"
+                    >
+                      Message<br/>Nica
+                    </a>
                 </div>
               </div>
 

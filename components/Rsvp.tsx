@@ -57,7 +57,7 @@ const Rsvp: React.FC = () => {
           
           <EnchantedReveal delay={0.2}>
             <p className="font-heading text-xl tracking-widest uppercase opacity-90">
-              Please respond by <span className="font-bold border-b border-white/60 pb-1 block md:inline mt-2 md:mt-0">February 20, 2026</span>
+              Please respond on or before <span className="font-bold border-b border-white/60 pb-1 block md:inline mt-2 md:mt-0">February 20, 2026</span>
             </p>
           </EnchantedReveal>
         </div>

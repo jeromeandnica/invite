@@ -1,4 +1,3 @@
-
 import React from 'react';
 import { ENTOURAGE_DATA } from '../constants';
 import EnchantedReveal from './EnchantedReveal';
@@ -37,7 +36,7 @@ const SimpleFlowerSVG = ({ className }: { className?: string }) => (
 
 // Divider Component
 const DividerFlower = () => (
-  <div className="flex items-center justify-center my-10 opacity-40 text-beige-sand">
+  <div className="flex items-center justify-center my-8 opacity-40 text-beige-sand">
     <div className="h-px w-12 bg-beige-sand/50 mr-4"></div>
     <SimpleFlowerSVG className="w-8 h-8" />
     <div className="h-px w-12 bg-beige-sand/50 ml-4"></div>
@@ -65,15 +64,14 @@ const SideBorderColumn: React.FC<{ position: 'left' | 'right' }> = ({ position }
   );
 };
 
-
 const SectionHeader: React.FC<{ title: string }> = ({ title }) => (
-  <h3 className="font-heading text-xl md:text-2xl text-beige-sand mb-6 uppercase tracking-widest mt-4 pb-2 inline-block relative">
+  <h3 className="font-heading text-xl md:text-2xl text-beige-sand mb-1 uppercase tracking-widest mt-1 pb-1 inline-block relative">
     {title}
   </h3>
 );
 
 const NameBlock: React.FC<{ role?: string; names: string | string[] }> = ({ role, names }) => (
-  <div className="mb-4">
+  <div className="mb-2">
     {role && <p className={ROLE_CLASS}>{role}</p>}
     {Array.isArray(names) ? (
       names.map((name, i) => <p key={i} className={NAME_CLASS}>{name}</p>)
@@ -100,12 +98,12 @@ const Entourage: React.FC = () => {
 
         {/* Groom & Bride - Top Section */}
         <div className="flex flex-col items-center justify-center gap-4 mb-12">
-            <div className="flex flex-col md:flex-row items-baseline gap-2 md:gap-4">
-                <span className="font-heading text-xl md:text-2xl text-beige-sand font-bold uppercase tracking-wider text-right md:w-32">Groom</span>
+            <div className="flex flex-col md:flex-row items-center md:items-baseline gap-2 md:gap-4">
+                <span className="font-heading text-xl md:text-2xl text-beige-sand font-bold uppercase tracking-wider text-center md:text-right md:w-32">Groom</span>
                 <span className="font-body text-2xl md:text-3xl text-cream-soft text-center md:text-left">Jerome R. Sumilang</span>
             </div>
-            <div className="flex flex-col md:flex-row items-baseline gap-2 md:gap-4">
-                 <span className="font-heading text-xl md:text-2xl text-beige-sand font-bold uppercase tracking-wider text-right md:w-32">Bride</span>
+            <div className="flex flex-col md:flex-row items-center md:items-baseline gap-2 md:gap-4">
+                 <span className="font-heading text-xl md:text-2xl text-beige-sand font-bold uppercase tracking-wider text-center md:text-right md:w-32">Bride</span>
                  <span className="font-body text-2xl md:text-3xl text-cream-soft text-center md:text-left">Veronica G. Espineli</span>
             </div>
         </div>
@@ -133,7 +131,7 @@ const Entourage: React.FC = () => {
         <DividerFlower />
 
         {/* Main Attendants */}
-        <div className="grid md:grid-cols-2 gap-12 max-w-4xl mx-auto mb-8">
+        <div className="grid md:grid-cols-1 gap-3 max-w-4xl mx-auto mb-8">
           <div>
             <SectionHeader title="Best Man" />
             <NameBlock names={ENTOURAGE_DATA.attendants.bestMan} />
@@ -149,7 +147,8 @@ const Entourage: React.FC = () => {
         {/* Secondary Sponsors */}
         <div className="max-w-4xl mx-auto mb-8">
           <SectionHeader title="Secondary Sponsors" />
-          <div className="grid md:grid-cols-3 gap-8 mt-4">
+          {/* UPDATED: Reduced top margin to mt-2 */}
+          <div className="grid md:grid-cols-3 gap-8 mt-2">
             {ENTOURAGE_DATA.secondarySponsors.map((group, idx) => (
               <div key={idx}>
                  <h4 className={ROLE_CLASS}>{group.role}</h4>
@@ -168,7 +167,8 @@ const Entourage: React.FC = () => {
           <SectionHeader title="Principal Sponsors" />
           
           {/* Desktop View: Split Layout */}
-          <div className="hidden md:grid grid-cols-2 gap-x-8 gap-y-3 max-w-5xl mx-auto mt-6">
+          {/* UPDATED: Reduced top margin to mt-2 */}
+          <div className="hidden md:grid grid-cols-2 gap-x-8 gap-y-3 max-w-5xl mx-auto mt-2">
             {ENTOURAGE_DATA.principalSponsors.map((pair, idx) => (
               <React.Fragment key={idx}>
                 <div className={`text-right ${NAME_CLASS}`}>{pair[0]}</div>
@@ -178,7 +178,8 @@ const Entourage: React.FC = () => {
           </div>
 
           {/* Mobile View: Stacked */}
-          <div className="md:hidden flex flex-col gap-6 mt-6">
+          {/* UPDATED: Reduced top margin to mt-2 */}
+          <div className="md:hidden flex flex-col gap-6 mt-2">
             {ENTOURAGE_DATA.principalSponsors.map((pair, idx) => (
               <div key={idx} className="text-center">
                 <div className={NAME_CLASS}>{pair[0]}</div>
@@ -215,7 +216,8 @@ const Entourage: React.FC = () => {
         {/* Bearers - Own Row, 3 Columns */}
         <div className="max-w-5xl mx-auto mb-12">
             <SectionHeader title="Bearers" />
-            <div className="grid md:grid-cols-3 gap-8 mt-6">
+            {/* UPDATED: Reduced top margin to mt-2 */}
+            <div className="grid md:grid-cols-3 gap-8 mt-2">
                 {ENTOURAGE_DATA.bearers.map((bearer, i) => (
                     <div key={i} className="flex flex-col items-center">
                         <p className={ROLE_CLASS}>{bearer.role}</p>
@@ -228,7 +230,8 @@ const Entourage: React.FC = () => {
         {/* Flower Girls - Single List */}
         <div className="max-w-4xl mx-auto mb-12">
             <SectionHeader title="Flower Girls" />
-            <div className="flex flex-col items-center gap-2 mt-6">
+            {/* UPDATED: Reduced top margin to mt-2 */}
+            <div className="flex flex-col items-center gap-2 mt-2">
                 {ENTOURAGE_DATA.flowerGirls.map((name, i) => (
                    <p key={i} className={NAME_CLASS}>{name}</p>
                 ))}

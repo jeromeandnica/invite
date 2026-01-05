@@ -3,10 +3,15 @@ import { Calendar, Clock, MapPin, Navigation, Car } from 'lucide-react';
 import EnchantedReveal from './EnchantedReveal.tsx';
 
 // ==================================================================================
-// LINKS CONFIGURATION
+// !!! REPLACE THIS IMAGE: VENUE PHOTO !!!
+// Description: A photo of the venue (Mahogany Place).
 // ==================================================================================
+import venueImage from '../assets/house-image.png'; 
+
+// LINKS CONFIGURATION
+const venueImg = venueImage;
 const GOOGLE_MAPS_LINK = "https://www.google.com/maps/search/?api=1&query=Mahogany+Place+Tagaytay";
-const WAZE_LINK = "https://ul.waze.com/ul?venue_id=79233165.792528259.3962899&overview=yes&utm_campaign=default&utm_source=waze_website&utm_medium=lm_share_location";
+const WAZE_LINK = "https://ul.waze.com/ul?venue_id=79233165.792528258.945667&overview=yes&utm_campaign=default&utm_source=waze_website&utm_medium=lm_share_location";
 
 const Countdown: React.FC = () => {
   const [timeLeft, setTimeLeft] = useState({ days: 0, hours: 0, minutes: 0, seconds: 0 });
@@ -85,50 +90,64 @@ const Countdown: React.FC = () => {
           </div>
         </div>
 
-        {/* Venue & Links Section */}
+        {/* Venue & Location Section */}
         <div className="max-w-4xl mx-auto">
-            <div className="text-center mb-10 flex flex-col items-center">
+            <div className="text-center mb-8 flex flex-col items-center">
                 <EnchantedReveal>
                   <h2 className="font-script text-6xl text-sage-dark mb-4">The Venue</h2>
                 </EnchantedReveal>
                 
                 <EnchantedReveal delay={0.2}>
-                  <div className="flex items-center justify-center gap-2 text-brown-earth mb-2">
+                  <div className="flex items-center justify-center gap-2 text-brown-earth">
                       <MapPin className="w-5 h-5" />
                       <p className="font-heading text-xl uppercase tracking-wide">Mahogany Place, Tagaytay</p>
                   </div>
-                  <p className="text-gray-500 italic text-sm max-w-md mx-auto">
-                    Click the buttons below to open the location directly in your preferred navigation app.
-                  </p>
                 </EnchantedReveal>
             </div>
 
-            {/* Navigation Buttons Container */}
-            <div className="flex flex-col md:flex-row items-center justify-center gap-6 w-full">
-              
-              {/* Google Maps Button */}
-              <a 
-                href={GOOGLE_MAPS_LINK}
-                target="_blank" 
-                rel="noopener noreferrer"
-                className="group w-full md:w-auto bg-white border-2 border-sage-dark text-sage-dark hover:bg-sage-dark hover:text-white px-8 py-4 rounded-full font-heading text-sm uppercase tracking-widest shadow-md flex items-center justify-center gap-3 transition-all duration-300 transform hover:scale-105"
-              >
-                <MapPin size={20} className="group-hover:animate-bounce" />
-                <span>Open in Google Maps</span>
-              </a>
+            {/* Venue Card Container */}
+            <div className="w-full bg-white rounded-xl overflow-hidden shadow-2xl border-4 border-white mb-6">
+                
+                {/* 1. The Image (Full Width, Natural Height) */}
+                <img 
+                  src={venueImg} 
+                  alt="Mahogany Place Tagaytay" 
+                  className="w-full h-auto block" 
+                />
 
-              {/* Waze Button */}
-              <a 
-                href={WAZE_LINK}
-                target="_blank" 
-                rel="noopener noreferrer"
-                className="group w-full md:w-auto bg-sage-dark text-white hover:bg-sage-dark/90 px-8 py-4 rounded-full font-heading text-sm uppercase tracking-widest shadow-lg flex items-center justify-center gap-3 transition-all duration-300 transform hover:scale-105"
-              >
-                <Car size={20} className="group-hover:animate-pulse" />
-                <span>Navigate with Waze</span>
-              </a>
+                {/* 2. The Action Buttons Area (Below the Image) */}
+                <div className="bg-sage-light/10 p-6 md:p-8">
+                  <p className="text-gray-500 italic text-sm mb-4">
+                    Navigate the location through these platforms:
+                  </p>
+                  
+                  <div className="flex flex-col md:flex-row items-center justify-center gap-4">
+                    {/* Google Maps Button */}
+                    <a 
+                      href={GOOGLE_MAPS_LINK}
+                      target="_blank" 
+                      rel="noopener noreferrer"
+                      className="w-full md:w-auto bg-white border border-sage-dark text-sage-dark hover:bg-sage-dark hover:text-white px-6 py-3 rounded-full font-heading text-xs uppercase tracking-widest shadow-sm flex items-center justify-center gap-2 transition-all duration-300"
+                    >
+                      <MapPin size={18} />
+                      <span>Google Maps</span>
+                    </a>
+
+                    {/* Waze Button */}
+                    <a 
+                      href={WAZE_LINK}
+                      target="_blank" 
+                      rel="noopener noreferrer"
+                      className="w-full md:w-auto bg-sage-dark border border-sage-dark text-white hover:bg-sage-dark/90 px-6 py-3 rounded-full font-heading text-xs uppercase tracking-widest shadow-md flex items-center justify-center gap-2 transition-all duration-300"
+                    >
+                      <Car size={18} />
+                      <span>Waze</span>
+                    </a>
+                  </div>
+                </div>
 
             </div>
+            
         </div>
 
       </div>

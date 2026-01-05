@@ -1,4 +1,3 @@
-
 import React from 'react';
 import { HashRouter, Routes, Route } from 'react-router-dom';
 import Navbar from './components/Navbar';
@@ -10,6 +9,7 @@ import Rsvp from './components/Rsvp';
 import Footer from './components/Footer';
 import ScrollReveal from './components/ScrollReveal';
 import Faq from './components/Faq';
+import GuestDashboard from './components/GuestDashboard'; // <--- 1. Import Dashboard
 
 const Home: React.FC = () => (
   <>
@@ -47,6 +47,10 @@ const App: React.FC = () => {
                <Faq />
             </div>
           } />
+
+          {/* 2. Add Secret Dashboard Route */}
+          <Route path="/dashboard" element={<GuestDashboard />} />
+          
         </Routes>
         
         <Footer />

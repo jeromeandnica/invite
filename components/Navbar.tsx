@@ -1,4 +1,3 @@
-
 import React, { useState } from 'react';
 import { Menu, X } from 'lucide-react';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
@@ -77,7 +76,7 @@ const Navbar: React.FC = () => {
           >
             FAQs
           </Link>
-          {/* RSVP Button */}
+          {/* RSVP Button - Kept as a button on Desktop for emphasis, but you can change this too if you want */}
           <button 
             onClick={handleRsvpClick}
             className="bg-sage-dark text-white px-6 py-2 rounded-full font-heading text-xs uppercase tracking-wider hover:bg-sage-dark/90 transition-all duration-200 shadow-md active:scale-95"
@@ -98,7 +97,7 @@ const Navbar: React.FC = () => {
         </div>
       </div>
 
-      {/* Mobile Menu Dropdown with snappier Framer Motion animation */}
+      {/* Mobile Menu Dropdown */}
       <AnimatePresence>
         {isOpen && (
           <motion.div 
@@ -127,12 +126,15 @@ const Navbar: React.FC = () => {
               >
                 FAQs
               </Link>
+              
+              {/* UPDATED: RSVP Button matches Link style now */}
               <button 
                 onClick={handleRsvpClick}
-                className="bg-sage-dark text-white px-6 py-4 rounded text-center font-heading text-xs uppercase tracking-wider shadow-md active:bg-sage-dark/80"
+                className="text-left font-heading text-sm uppercase tracking-widest py-2 text-gray-600 hover:text-sage-dark transition-colors"
               >
                 RSVP
               </button>
+
             </div>
           </motion.div>
         )}
