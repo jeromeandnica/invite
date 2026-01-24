@@ -47,8 +47,8 @@ export const ENTOURAGE_DATA = {
 };
 
 export const COLORS = [
-  { name: "Sage Green", hex: "#56644B" },
-  { name: "Brown", hex: "#6F5643" },
-  { name: "Beige", hex: "#C1AA87" },
-  { name: "Cream", hex: "#F4F0E6" },
+  { name: "Sage Green", hex: "#7b9a6e" },
+  { name: "Brown", hex: "#c3d5af" },
+  { name: "Beige", hex: "#e7e2c5" },
+  { name: "Cream", hex: "#b0a587" },
 ];

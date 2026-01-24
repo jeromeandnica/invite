@@ -85,7 +85,7 @@ const FAQ_SECTIONS: FaqSection[] = [
       },
       {
         question: "Can I bring a plus-one with me?",
-        answer: "As much as we’d love to include everyone, we are only able to accommodate the guests whose names appear on the invitation."
+        answer: "As much as we’d love to include everyone, we are only able to accommodate the guests whose names appear on the RSVP."
       },
       {
         question: "Can I bring my kids with me?",
@@ -243,6 +243,7 @@ const Faq: React.FC = () => {
                 </div>
                 <p className="font-heading text-[10px] uppercase tracking-[0.2em] text-[#8e98a5] font-bold mb-2">Call or Text</p>
                 <p className="font-heading text-3xl text-[#56644b] font-bold">0936-041-5271</p>
+                <p className="font-heading text-[13px] uppercase tracking-[0.2em] text-[#8e98a5] font-bold mb-2">Nica Espineli</p>
               </div>
 
               {/* Connect on Facebook Card - Small & Neat */}

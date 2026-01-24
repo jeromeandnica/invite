@@ -5,6 +5,7 @@ import Hero from './components/Hero';
 import Countdown from './components/Countdown';
 import Entourage from './components/Entourage';
 import Attire from './components/Attire';
+import GalleryPage from './components/GalleryPage';
 import Rsvp from './components/Rsvp';
 import Footer from './components/Footer';
 import ScrollReveal from './components/ScrollReveal';
@@ -42,6 +43,11 @@ const App: React.FC = () => {
 
         <Routes>
           <Route path="/" element={<Home />} />
+          <Route path="/gallery" element={
+            <div className="animate-fade-in">
+              <GalleryPage />
+            </div>
+          } />
           <Route path="/faq" element={
             <div className="animate-fade-in">
                <Faq />

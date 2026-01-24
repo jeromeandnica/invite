@@ -68,6 +68,15 @@ const Navbar: React.FC = () => {
             Home
           </Link>
           <Link 
+            to="/gallery"
+            onClick={handleNavClick}
+            className={`font-heading text-sm uppercase tracking-widest hover:text-sage-dark transition-colors duration-200 ${
+              location.pathname === '/gallery' ? 'text-sage-dark font-bold border-b-2 border-sage-dark pb-1' : 'text-gray-500'
+            }`}
+          >
+            Gallery
+          </Link>
+          <Link 
             to="/faq"
             onClick={handleNavClick}
             className={`font-heading text-sm uppercase tracking-widest hover:text-sage-dark transition-colors duration-200 ${
@@ -116,6 +125,15 @@ const Navbar: React.FC = () => {
                 }`}
               >
                 Home
+              </Link>
+              <Link 
+                to="/gallery"
+                onClick={handleNavClick}
+                className={`text-left font-heading text-sm uppercase tracking-widest py-2 transition-colors ${
+                  location.pathname === '/gallery' ? 'text-sage-dark font-bold' : 'text-gray-600'
+                }`}
+              >
+                Gallery
               </Link>
               <Link 
                 to="/faq"

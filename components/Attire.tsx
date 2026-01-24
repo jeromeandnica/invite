@@ -1,6 +1,5 @@
 import React, { useState } from 'react';
-import { COLORS } from '../constants.ts';
-import { HelpCircle, Gift, ArrowRight, Maximize2, Camera } from 'lucide-react'; // Added Camera icon
+import { HelpCircle, Gift, ArrowRight, Maximize2, Camera } from 'lucide-react';
 import EnchantedReveal from './EnchantedReveal.tsx';
 import ImageModal from './ImageModal.tsx';
 import { Link } from 'react-router-dom';
@@ -22,17 +21,17 @@ const sponsorAttireImage = sponsorImg;
 // ==================================================================================
 const guestAttireImage = guestImg;
 
-// Custom SVG for Dress & Suit to replace generic Shirt icon
-const DressSuitIcon = ({ className }: { className?: string }) => (
-  <svg viewBox="0 0 100 100" className={className} fill="none" stroke="currentColor" strokeWidth="1.5">
-    {/* Dress */}
-    <path d="M30 25 C30 25 20 35 15 45 C15 45 25 40 30 45 L30 85 Q40 90 50 85 L50 45 C55 40 65 45 65 45 C60 35 50 25 50 25 Q40 35 30 25 Z" />
-    {/* Suit/Polo */}
-    <path d="M60 25 L70 20 L80 25 L80 85 L60 85 L60 25 Z" />
-    <path d="M60 25 L70 40 L80 25" />
-    <path d="M55 25 L85 25" />
-  </svg>
-);
+// Define Color Groups Locally for Layout Control
+const PALETTE_GROUPS = [
+  {
+    label: "Shades of Sage Green",
+    colors: ["#7b9a6e", "#c3d5af"] // The two Green shades
+  },
+  {
+    label: "Shades of Beige",
+    colors: ["#e7e2c5", "#b0a587"] // The two Beige shades
+  }
+];
 
 const Attire: React.FC = () => {
   const [selectedImage, setSelectedImage] = useState<{src: string, caption: string} | null>(null);
@@ -61,35 +60,35 @@ const Attire: React.FC = () => {
           <EnchantedReveal>
             <h2 className="font-script text-6xl mb-4 text-sage-dark">Attire Guide</h2>
           </EnchantedReveal>
-          
-          <EnchantedReveal delay={0.2}>
-            <div className="flex justify-center items-center gap-3 text-sage-dark/80">
-              <div className="w-8 h-8">
-                <DressSuitIcon />
-              </div>
-              <p className="font-heading text-xl uppercase tracking-widest">Formal / Semi-Formal</p>
-            </div>
-          </EnchantedReveal>
         </div>
 
         <div className="bg-white p-8 md:p-12 rounded-2xl shadow-xl border border-beige-sand/20 mb-20">
           
           {/* Color Palette (Primarily for Guests) */}
-          <p className="font-body text-lg mb-6 leading-relaxed">
+          <p className="font-body text-lg mb-8 leading-relaxed">
             We'd love to see you in our wedding colors!
             <br />
             Please refer to the palette below for guidance.
           </p>
           
-          <div className="flex flex-wrap justify-center gap-8 mb-12">
-            {COLORS.map((color) => (
-              <div key={color.name} className="flex flex-col items-center gap-3 group">
-                <div 
-                  className="w-16 h-16 md:w-20 md:h-20 rounded-full shadow-inner border-4 border-white ring-1 ring-gray-200 transform group-hover:scale-110 transition-transform duration-300"
-                  style={{ backgroundColor: color.hex }}
-                  aria-label={color.name}
-                ></div>
-                <span className="font-heading text-xs uppercase tracking-wide text-gray-600">{color.name}</span>
+          {/* GROUPED COLOR PALETTE */}
+          <div className="flex flex-wrap justify-center gap-12 md:gap-2 mb-12">
+            {PALETTE_GROUPS.map((group) => (
+              <div key={group.label} className="flex flex-col items-center gap-4">
+                {/* The Color Circles Row */}
+                <div className="flex gap-2">
+                  {group.colors.map((hex, index) => (
+                    <div 
+                      key={index}
+                      className="w-16 h-16 md:w-20 md:h-20 rounded-full shadow-inner border-4 border-white ring-1 ring-gray-200 transform hover:scale-110 transition-transform duration-300"
+                      style={{ backgroundColor: hex }}
+                    ></div>
+                  ))}
+                </div>
+                {/* The Group Label */}
+                <span className="font-heading text-sm uppercase tracking-widest text-gray-600 border-t border-gray-200 pt-2 px-4">
+                  {group.label}
+                </span>
               </div>
             ))}
           </div>
@@ -114,7 +113,7 @@ const Attire: React.FC = () => {
               {/* Guest Outfit Reference Image Placeholder - Landscape */}
               <div className="mt-auto">
                  <div 
-                   className="relative group overflow-hidden rounded-lg shadow-md border border-gray-100 bg-white aspect-[3/2] cursor-zoom-in"
+                   className="relative group overflow-hidden rounded-lg shadow-md border border-gray-100 bg-white aspect-[3/2] cursor-zoom-in transition-transform active:scale-95"
                    onClick={() => openImage(guestAttireImage, "Guest Reference Style")}
                  >
                     <img 
@@ -123,18 +122,25 @@ const Attire: React.FC = () => {
                       loading="lazy"
                       className="w-full h-full object-cover grayscale-[20%] opacity-90 group-hover:opacity-100 group-hover:scale-105 transition-all duration-500"
                     />
-                    <div className="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent"></div>
+                    <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-black/10"></div>
                     
-                    {/* Hover Overlay */}
-                    <div className="absolute inset-0 bg-sage-dark/30 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
+                    {/* Desktop Hover Overlay */}
+                    <div className="absolute inset-0 bg-sage-dark/30 opacity-0 group-hover:opacity-100 transition-opacity duration-300 hidden md:flex items-center justify-center">
                       <div className="bg-white/20 backdrop-blur-sm p-3 rounded-full text-white">
                         <Maximize2 size={24} />
                       </div>
                     </div>
 
+                    {/* Mobile Icon */}
+                    <div className="absolute top-3 right-3 md:hidden bg-black/30 backdrop-blur-md text-white p-2 rounded-full animate-pulse shadow-sm pointer-events-none">
+                       <Maximize2 size={18} />
+                    </div>
+
+                    {/* Caption */}
                     <div className="absolute bottom-4 left-4 right-4">
-                      <p className="font-heading text-[10px] uppercase tracking-widest text-white drop-shadow-md text-center">
+                      <p className="font-heading text-[10px] md:text-xs uppercase tracking-widest text-white drop-shadow-md text-center leading-tight">
                         Guest Reference Style
+                        <span className="block md:hidden text-[9px] opacity-90 mt-1 font-body normal-case tracking-normal">(Tap to enlarge)</span>
                       </p>
                     </div>
                  </div>
@@ -158,7 +164,7 @@ const Attire: React.FC = () => {
               {/* Outfit Reference Image Placeholder - Landscape */}
               <div className="mt-auto">
                  <div 
-                   className="relative group overflow-hidden rounded-lg shadow-md border border-gray-100 bg-white aspect-[3/2] cursor-zoom-in"
+                   className="relative group overflow-hidden rounded-lg shadow-md border border-gray-100 bg-white aspect-[3/2] cursor-zoom-in transition-transform active:scale-95"
                    onClick={() => openImage(sponsorAttireImage, "Sponsor Reference Style")}
                  >
                     <img 
@@ -167,18 +173,22 @@ const Attire: React.FC = () => {
                       loading="lazy"
                       className="w-full h-full object-cover grayscale-[20%] opacity-90 group-hover:opacity-100 group-hover:scale-105 transition-all duration-500"
                     />
-                    <div className="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent"></div>
+                    <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-black/10"></div>
                     
-                    {/* Hover Overlay */}
-                    <div className="absolute inset-0 bg-sage-dark/30 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
+                    <div className="absolute inset-0 bg-sage-dark/30 opacity-0 group-hover:opacity-100 transition-opacity duration-300 hidden md:flex items-center justify-center">
                       <div className="bg-white/20 backdrop-blur-sm p-3 rounded-full text-white">
                         <Maximize2 size={24} />
                       </div>
                     </div>
 
+                    <div className="absolute top-3 right-3 md:hidden bg-black/30 backdrop-blur-md text-white p-2 rounded-full animate-pulse shadow-sm pointer-events-none">
+                       <Maximize2 size={18} />
+                    </div>
+
                     <div className="absolute bottom-4 left-4 right-4">
-                      <p className="font-heading text-[10px] uppercase tracking-widest text-white drop-shadow-md text-center">
+                      <p className="font-heading text-[10px] md:text-xs uppercase tracking-widest text-white drop-shadow-md text-center leading-tight">
                         Sponsor Reference Style
+                        <span className="block md:hidden text-[9px] opacity-90 mt-1 font-body normal-case tracking-normal">(Tap to enlarge)</span>
                       </p>
                     </div>
                  </div>
@@ -205,7 +215,6 @@ const Attire: React.FC = () => {
              <div className="h-px bg-sage-dark/20 flex-1"></div>
            </div>
            
-           {/* UPDATED: Changed to 3 columns to fit the new Photo component */}
            <div className="grid md:grid-cols-3 gap-6 text-left">
              
              {/* 1. FAQs Link */}
@@ -221,14 +230,14 @@ const Attire: React.FC = () => {
                  Questions?
                </h3>
                <p className="font-body text-gray-600 leading-relaxed mb-6">
-                  Visit our FAQs regarding kids, parking, and other essential details for the big day.
+                  Visit our FAQs regarding kids, plus ones, pets, parking, and other essential details for the big day.
                </p>
                <span className="text-sage-dark font-bold text-xs uppercase tracking-widest flex items-center gap-2 group-hover:translate-x-1 transition-transform mt-auto">
                  View FAQs <ArrowRight size={14} />
                </span>
              </Link>
 
-             {/* 2. NEW: Share Photos Component */}
+             {/* 2. Share Photos Component */}
              <a 
                href="https://drive.google.com/drive/folders/1coNXCymXWmVXWWzn8h7yMvPX2wpgutSY?usp=drive_link"
                target="_blank"
@@ -256,7 +265,7 @@ const Attire: React.FC = () => {
                </div>
                <h3 className="font-heading text-xl text-brown-earth mb-4 uppercase tracking-wide">Preferred Gifts</h3>
                <p className="font-body text-gray-600 leading-relaxed">
-                 As we begin our new life together, your love, prayers, and presence are what we treasure most. If you wish to bless us further, we'd be grateful for a monetary gift.
+                 As love is what this day is all about, your presence is one we couldn't celebrate without. However, should you insist that a gift is worth giving, a small saving for our future is a delightful blessing.
                </p>
              </div>
              
