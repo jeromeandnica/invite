@@ -1,7 +1,11 @@
 import React, { useEffect, useState } from 'react';
 import { collection, getDocs, query, orderBy } from 'firebase/firestore';
 import { db } from '../utils/firebase';
-import { Users, CheckCircle, XCircle, Clock, RefreshCw, Search, Download } from 'lucide-react';
+import { Users, CheckCircle, XCircle, Clock, RefreshCw, Search, Download, Lock, ChevronRight } from 'lucide-react';
+import toast from 'react-hot-toast';
+
+// --- CONFIGURATION ---
+const DASHBOARD_PASSWORD = "lupetniGabs2026";
 
 // Types matched to your Rsvp.tsx
 interface Member {
@@ -22,6 +26,11 @@ interface FlatGuest extends Member {
 }
 
 const GuestDashboard: React.FC = () => {
+  // --- AUTH STATE ---
+  const [isAuthenticated, setIsAuthenticated] = useState(false);
+  const [passwordInput, setPasswordInput] = useState('');
+  
+  // --- DATA STATE ---
   const [guests, setGuests] = useState<FlatGuest[]>([]);
   const [loading, setLoading] = useState(true);
   const [filter, setFilter] = useState<'all' | 'accepted' | 'pending' | 'declined'>('all');
@@ -66,14 +75,24 @@ const GuestDashboard: React.FC = () => {
       setStats(statCounts);
     } catch (error) {
       console.error("Error fetching guests:", error);
+      toast.error("Failed to load data.");
     } finally {
       setLoading(false);
     }
   };
 
-  useEffect(() => {
-    fetchData();
-  }, []);
+  // --- HANDLE LOGIN ---
+  const handleLogin = (e: React.FormEvent) => {
+    e.preventDefault();
+    if (passwordInput === DASHBOARD_PASSWORD) {
+      setIsAuthenticated(true);
+      fetchData(); // Only fetch data AFTER success
+      toast.success("Welcome, Admin!");
+    } else {
+      toast.error("Incorrect Password");
+      setPasswordInput('');
+    }
+  };
 
   const filteredGuests = guests.filter(g => {
     const matchesFilter = filter === 'all' || g.status === filter;
@@ -98,9 +117,41 @@ const GuestDashboard: React.FC = () => {
     link.click();
   };
 
+  // --- RENDER LOGIN SCREEN IF NOT AUTHENTICATED ---
+  if (!isAuthenticated) {
+    return (
+      <div className="min-h-screen bg-paper flex items-center justify-center px-4 pt-20">
+        <div className="bg-white p-8 rounded-xl shadow-xl max-w-md w-full border border-sage-light/20 text-center">
+          <div className="w-16 h-16 bg-sage-light/20 rounded-full flex items-center justify-center mx-auto mb-6 text-sage-dark">
+            <Lock size={32} />
+          </div>
+          <h2 className="font-heading text-2xl text-sage-dark mb-2 font-bold">Admin Access</h2>
+          <p className="text-gray-500 mb-6 text-sm">Please enter the password to view the guest list.</p>
+          
+          <form onSubmit={handleLogin} className="space-y-4">
+            <input 
+              type="password" 
+              placeholder="Enter Password"
+              className="w-full px-4 py-3 border border-gray-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-sage-light transition-all text-center tracking-widest"
+              value={passwordInput}
+              onChange={(e) => setPasswordInput(e.target.value)}
+              autoFocus
+            />
+            <button 
+              type="submit"
+              className="w-full bg-sage-dark text-white py-3 rounded-lg font-heading uppercase tracking-widest text-sm hover:bg-sage-dark/90 transition-colors flex items-center justify-center gap-2"
+            >
+              Access Dashboard <ChevronRight size={16} />
+            </button>
+          </form>
+        </div>
+      </div>
+    );
+  }
+
+  // --- RENDER DASHBOARD IF AUTHENTICATED ---
   return (
-    // UPDATED: Added 'pt-28 md:pt-32' to clear the fixed navbar
-    <div className="min-h-screen bg-gray-50 text-gray-800 px-6 pb-6 pt-28 md:px-12 md:pb-12 md:pt-32 font-sans">
+    <div className="min-h-screen bg-gray-50 text-gray-800 px-6 pb-6 pt-28 md:px-12 md:pb-12 md:pt-32 font-sans animate-fade-in">
       <div className="max-w-6xl mx-auto">
         
         {/* Header */}
@@ -185,7 +236,7 @@ const GuestDashboard: React.FC = () => {
             </table>
           </div>
           <div className="p-4 border-t bg-gray-50 text-xs text-gray-500 text-center">
-             Showing {filteredGuests.length} guests
+              Showing {filteredGuests.length} guests
           </div>
         </div>
 

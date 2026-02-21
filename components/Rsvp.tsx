@@ -1,19 +1,32 @@
 
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { Check, X, Loader2, Send } from 'lucide-react';
+import { Check, X, Loader2, Send, RefreshCcw } from 'lucide-react';
 import { doc, updateDoc } from 'firebase/firestore';
-import { db, GuestGroup, GuestMember } from '../utils/firebase.ts';
-import EnchantedReveal from './EnchantedReveal.tsx';
-import RsvpSearch from './RsvpSearch.tsx';
+import { db, GuestGroup, GuestMember } from '../utils/firebase';
+import EnchantedReveal from './EnchantedReveal';
+import RsvpSearch from './RsvpSearch';
 
 const MotionDiv = motion.div as any;
 
-const Rsvp: React.FC = () => {
+interface RsvpProps {
+  initialGuest: GuestGroup | null;
+}
+
+const Rsvp: React.FC<RsvpProps> = ({ initialGuest }) => {
   const [step, setStep] = useState<'login' | 'selection' | 'success'>('login');
   const [loading, setLoading] = useState(false);
   const [groupData, setGroupData] = useState<GuestGroup | null>(null);
   const [updatedMembers, setUpdatedMembers] = useState<GuestMember[]>([]);
+
+  // Automatically skip to selection if guest is provided from intro
+  useEffect(() => {
+    if (initialGuest) {
+      setGroupData(initialGuest);
+      setUpdatedMembers(initialGuest.members);
+      setStep('selection');
+    }
+  }, [initialGuest]);
 
   const handleGroupSelect = (group: GuestGroup) => {
     setGroupData(group);
@@ -45,6 +58,12 @@ const Rsvp: React.FC = () => {
     }
   };
 
+  const handleReset = () => {
+    setStep('login');
+    setGroupData(null);
+    setUpdatedMembers([]);
+  };
+
   return (
     <section id="rsvp" className="py-24 relative min-h-[800px] bg-beige-sand flex items-center justify-center">
       <div className="absolute inset-0 bg-black/20 z-0"></div>
@@ -57,7 +76,7 @@ const Rsvp: React.FC = () => {
           
           <EnchantedReveal delay={0.2}>
             <p className="font-heading text-xl tracking-widest uppercase opacity-90">
-              Please respond on or before <span className="font-bold border-b border-white/60 pb-1 block md:inline mt-2 md:mt-0">February 20, 2026</span>
+              Please respond by <span className="font-bold border-b border-white/60 pb-1 block md:inline mt-2 md:mt-0">February 20, 2026</span>
             </p>
           </EnchantedReveal>
         </div>
@@ -93,11 +112,20 @@ const Rsvp: React.FC = () => {
                 animate={{ opacity: 1, x: 0 }}
                 exit={{ opacity: 0, x: -20 }}
               >
-                <div className="text-center mb-8 border-b border-sage-light/20 pb-6">
+                <div className="text-center mb-8 border-b border-sage-light/20 pb-6 relative">
                   <p className="font-body text-gray-500 italic mb-2">Responding for</p>
                   <h3 className="font-script text-5xl text-sage-dark">
                     {groupData.groupName}
                   </h3>
+                  
+                  {/* "Not you?" button to reset if they searched for someone else or wrong guest found */}
+                  <button 
+                    onClick={handleReset}
+                    className="mt-4 flex items-center gap-1 text-[10px] uppercase tracking-widest text-gray-400 hover:text-sage-dark transition-colors mx-auto"
+                  >
+                    <RefreshCcw size={10} />
+                    Not you? Change Party
+                  </button>
                 </div>
 
                 <div className="space-y-8 mb-10">
@@ -136,10 +164,7 @@ const Rsvp: React.FC = () => {
                 
                 <div className="flex gap-4">
                   <button
-                    onClick={() => {
-                      setStep('login');
-                      setGroupData(null);
-                    }}
+                    onClick={handleReset}
                     className="w-1/3 bg-transparent text-sage-dark font-heading uppercase text-sm tracking-widest py-4 rounded border border-sage-dark/20 hover:bg-sage-dark/5 transition-colors"
                   >
                     Back
@@ -171,10 +196,7 @@ const Rsvp: React.FC = () => {
                   Your response has been successfully recorded. We can't wait to celebrate with you!
                 </p>
                 <button
-                  onClick={() => {
-                    setStep('login');
-                    setGroupData(null);
-                  }}
+                  onClick={handleReset}
                   className="text-sage-dark underline font-heading text-sm uppercase tracking-widest hover:text-sage-light"
                 >
                   Close
@@ -189,4 +211,3 @@ const Rsvp: React.FC = () => {
 };
 
 export default Rsvp;
-    
