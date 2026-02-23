@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
-import { collection, getDocs, query, orderBy } from 'firebase/firestore';
+import { collection, getDocs, query, orderBy, addDoc } from 'firebase/firestore';
 import { db } from '../utils/firebase';
-import { Users, CheckCircle, XCircle, Clock, RefreshCw, Search, Download, Lock, ChevronRight } from 'lucide-react';
+import { Users, CheckCircle, XCircle, Clock, RefreshCw, Search, Download, Lock, ChevronRight, Upload } from 'lucide-react';
 import toast from 'react-hot-toast';
 
 // --- CONFIGURATION ---
@@ -43,6 +43,40 @@ const GuestDashboard: React.FC = () => {
     declined: 0,
     pending: 0
   });
+
+  // upload state
+  const [showImport, setShowImport] = useState(false);
+  const [importJson, setImportJson] = useState('');
+  const [isImporting, setIsImporting] = useState(false);
+
+  const handleBulkImport = async () => {
+    try {
+      setIsImporting(true);
+      const parsedData = JSON.parse(importJson); // Read the text area
+
+      if (!Array.isArray(parsedData)) {
+        toast.error("Format must be an array [...]");
+        return;
+      }
+
+      // Loop through each group and upload to Firebase
+      const promises = parsedData.map(group => 
+        addDoc(collection(db, 'guest_groups'), group)
+      );
+
+      await Promise.all(promises);
+      
+      toast.success(`Successfully added ${parsedData.length} groups!`);
+      setShowImport(false);
+      setImportJson('');
+      fetchData(); // Refresh the table
+    } catch (error) {
+      console.error(error);
+      toast.error("Invalid JSON format. Please check your text.");
+    } finally {
+      setIsImporting(false);
+    }
+  };
 
   const fetchData = async () => {
     setLoading(true);
@@ -164,6 +198,12 @@ const GuestDashboard: React.FC = () => {
             <button onClick={fetchData} className="p-2 bg-white border rounded hover:bg-gray-100 text-gray-600 transition-colors" title="Refresh Data">
                 <RefreshCw size={20} className={loading ? "animate-spin" : ""} />
             </button>
+            
+            {/* NEW IMPORT BUTTON */}
+            <button onClick={() => setShowImport(true)} className="flex items-center gap-2 bg-gray-800 text-white px-4 py-2 rounded shadow hover:bg-gray-700 transition-all">
+                <Upload size={18} /> Import JSON
+            </button>
+
             <button onClick={handleExport} className="flex items-center gap-2 bg-sage-dark text-white px-4 py-2 rounded shadow hover:bg-sage-dark/90 transition-all">
                 <Download size={18} /> Export CSV
             </button>
@@ -239,6 +279,35 @@ const GuestDashboard: React.FC = () => {
               Showing {filteredGuests.length} guests
           </div>
         </div>
+
+        {/* NEW IMPORT MODAL (Put this right before the final closing </div> of the dashboard) */}
+        {showImport && (
+          <div className="fixed inset-0 bg-black/50 z-50 flex items-center justify-center p-4">
+            <div className="bg-white rounded-xl p-6 max-w-2xl w-full shadow-2xl">
+              <h3 className="font-heading text-xl text-sage-dark font-bold mb-2">Bulk Import Guests</h3>
+              <p className="text-sm text-gray-500 mb-4">Paste your guest list as a JSON array.</p>
+              
+              <textarea
+                value={importJson}
+                onChange={(e) => setImportJson(e.target.value)}
+                className="w-full h-64 p-3 border rounded font-mono text-sm bg-gray-50 mb-4"
+                placeholder='[&#10;  {&#10;    "groupName": "The Santos Family",&#10;    "members": [&#10;      { "name": "John Santos", "status": "pending" }&#10;    ]&#10;  }&#10;]'
+              ></textarea>
+
+              <div className="flex justify-end gap-3">
+                <button onClick={() => setShowImport(false)} className="px-4 py-2 border rounded text-gray-600 hover:bg-gray-50">Cancel</button>
+                <button 
+                  onClick={handleBulkImport} 
+                  disabled={isImporting}
+                  className="px-4 py-2 bg-sage-dark text-white rounded hover:bg-sage-dark/90 flex items-center gap-2"
+                >
+                  {isImporting ? <RefreshCw className="animate-spin" size={16} /> : <Upload size={16} />}
+                  Import Data
+                </button>
+              </div>
+            </div>
+          </div>
+        )}
 
       </div>
     </div>

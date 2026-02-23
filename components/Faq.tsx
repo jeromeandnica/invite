@@ -46,7 +46,7 @@ const FAQ_SECTIONS: FaqSection[] = [
         question: "Is RSVP essential?",
         answer: (
           <span>
-            Yes, please RSVP on or before <strong>February 20, 2026</strong>, to ensure you are included in our final guest list. If you have already RSVPed to attend, but find that you will not make it, please notify us.
+            Yes, please RSVP on or before <strong>March 10, 2026</strong>, to ensure you are included in our final guest list. If you have already RSVPed to attend, but find that you will not make it, please notify us.
           </span>
         )
       },
@@ -58,7 +58,7 @@ const FAQ_SECTIONS: FaqSection[] = [
         question: "What if I did not RSVP but will attend the wedding?",
         answer: (
           <span><b>NO RSVP = NO SEAT</b>. 
-            We will assign your seats, so we strongly suggest you do the RSVP on or before <strong>February 20, 2026</strong>, or you may contact and inform us ahead of time. In any case that you may have said yes in our RSVP but suddenly won't be able to attend, please let us know ASAP so we can accommodate any changes.
+            We will assign your seats, so we strongly suggest you do the RSVP on or before <strong>March 10, 2026</strong>, or you may contact and inform us ahead of time. In any case that you may have said yes in our RSVP but suddenly won't be able to attend, please let us know ASAP so we can accommodate any changes.
           </span>
         )
       },
@@ -70,7 +70,7 @@ const FAQ_SECTIONS: FaqSection[] = [
         question: "What date should I RSVP?",
         answer: (
           <span>
-            We’ll appreciate it if you RSVP on or before <strong>February 20, 2026</strong>. Kindly <Link to="/" onClick={() => setTimeout(() => document.getElementById('rsvp')?.scrollIntoView({ behavior: 'smooth' }), 300)} className="text-sage-dark underline font-bold hover:text-sage-light">click here</Link> to go directly to the forms.
+            We’ll appreciate it if you RSVP on or before <strong>March 10, 2026</strong>. Kindly <Link to="/" onClick={() => setTimeout(() => document.getElementById('rsvp')?.scrollIntoView({ behavior: 'smooth' }), 300)} className="text-sage-dark underline font-bold hover:text-sage-light">click here</Link> to go directly to the forms.
           </span>
         )
       }
